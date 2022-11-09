@@ -23,6 +23,7 @@ namespace TerrificTrioCakes.Models.DB
         public virtual DbSet<Ingredient> Ingredients { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+        public List<CartItems> CartItems { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

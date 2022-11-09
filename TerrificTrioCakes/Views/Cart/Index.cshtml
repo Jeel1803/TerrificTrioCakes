@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TerrificTrioCakes.Models.DB.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+        <th>Option</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in ViewBag.Cart)
+ {
+        <tr>
+            <td><a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove">Remove</a></td>
+            <td>@item.Cake.Id</td>
+            <td>@item.Cake.Name</td>
+            <td><img src="~/images/@item.Cake.Image" width="60" /></td>
+            <td>@item.Cake.Price</td>
+            <td>@item.Quantity</td>
+            <td>@(item.Cake.Price * item.Quantity)</td>
+            <td>
+                <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="decrese"> <input type='button' value='-' class='qtyminus minus' field='quantity' /> </a>
+                     <input type='@item.Quantity' name='quantity' value='@item.Quantity' class='qty' />
+                     <a  asp-route-id="@item.Cake.Id" asp-action="add"> <input type='button' value='+' class='qtyplus plus' field='quantity' /> </a>
+                    <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove">Remove</a>
+            </td>
+                    <td><a asp-controller="Order" asp-action="CheckOut" >Checkout</a></td>
+
+
+        </tr>
+    }
+    <tr>
+        <td>@ViewBag.total</td>
+
+    </tr>
+</table>
+<a asp-controller="Cake" asp-action="index">Continue Shopping</a>
+
+
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=ATNwtOFAgffDhMfTE8dGXlau9W8Gv82HLENDNmAfobf55lKFzR1u48MWIaTOK4s6V0Rancd7L8HJSox3"></script>
+<div id="paypal-button-container"></div>
+<script>
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // This function sets up the details of the transaction,
+            // including the amount and line item details.
+
+            var grandTotal = @ViewBag.total
+                        //parseFloat(document.getElementById("GrandTotal").value).toFixed(2).toString();
+                    //alert("GrandTotal = " + grandTotal);
+                    return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: grandTotal
+                    }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            // This function captures the funds from the transaction.
+            return actions.order.capture().then(function (details) {
+                // This function shows a transaction success message to your buyer.
+                // When ready to go live, remove the alert and show a success message within this page. For example:
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '<h3>Thank you for your payment!</h3>' +
+                    '<br><h4>Transaction completed by ' + details.payer.name.given_name + '</h4>';
+                // Or go to another URL:  actions.redirect('thank_you.html');
+                //actions.redirect("https://localhost:7196/");
+                //alert('Transaction completed by ' + details.payer.name.given_name);
+
+            });
+        }
+
+    }).render('#paypal-button-container');
+</script>

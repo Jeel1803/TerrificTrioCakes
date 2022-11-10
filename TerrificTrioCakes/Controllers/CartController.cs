@@ -43,6 +43,14 @@ namespace TerrificTrioCakes.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult CheckOut()
+        {
+            List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            
+            return View();
+        }
         public IActionResult Add(int id)
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -100,6 +108,7 @@ namespace TerrificTrioCakes.Controllers
                 ViewBag.Cart = cart;
                 ViewBag.total = cart.Sum(item => item.Cake.Price * item.Quantity);
             }
+
 
             return View();
         }

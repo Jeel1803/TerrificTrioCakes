@@ -5,6 +5,7 @@ namespace TerrificTrioCakes.Models.DB
 {
     public partial class OrderDetail
     {
+
         public int OrderDetailId { get; set; }
         public int TotalAmount { get; set; }
         public int OrderId { get; set; }

@@ -9,100 +9,85 @@ using TerrificTrioCakes.Models.DB;
 
 namespace TerrificTrioCakes.Controllers
 {
-    public class OrderController : Controller
+    public class IngredientController : Controller
     {
         private readonly CakeShopContext _context;
 
-        public OrderController(CakeShopContext context)
+        public IngredientController(CakeShopContext context)
         {
             _context = context;
         }
 
-        public IActionResult CheckOut()
-        {
-            List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-
-            return RedirectToAction("Index");
-        }
-
-        // GET: Order
+        // GET: Ingredient
         public async Task<IActionResult> Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
-            if (cart != null)
-            {
-                ViewBag.Cart = cart;
-                ViewBag.total = cart.Sum(item => item.Cake.Price * item.Quantity);
-            }
-            return View();
+              return View(await _context.Ingredients.ToListAsync());
         }
 
-       
-        // GET: Order/Details/5
+        // GET: Ingredient/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null || _context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (order == null)
+            var ingredient = await _context.Ingredients
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(ingredient);
         }
 
-        // GET: Order/Create
+        // GET: Ingredient/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Order/Create
+        // POST: Ingredient/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,Address,Email,FirstName,LastName,OrderTotal,Phone,UserId")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Ingredient ingredient)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
+                _context.Add(ingredient);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(order);
+            return View(ingredient);
         }
 
-        // GET: Order/Edit/5
+        // GET: Ingredient/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null || _context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
-            return View(order);
+            return View(ingredient);
         }
 
-        // POST: Order/Edit/5
+        // POST: Ingredient/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,Address,Email,FirstName,LastName,OrderTotal,Phone,UserId")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Ingredient ingredient)
         {
-            if (id != order.OrderId)
+            if (id != ingredient.Id)
             {
                 return NotFound();
             }
@@ -111,12 +96,12 @@ namespace TerrificTrioCakes.Controllers
             {
                 try
                 {
-                    _context.Update(order);
+                    _context.Update(ingredient);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrderExists(order.OrderId))
+                    if (!IngredientExists(ingredient.Id))
                     {
                         return NotFound();
                     }
@@ -127,49 +112,49 @@ namespace TerrificTrioCakes.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(order);
+            return View(ingredient);
         }
 
-        // GET: Order/Delete/5
+        // GET: Ingredient/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null || _context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (order == null)
+            var ingredient = await _context.Ingredients
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(ingredient);
         }
 
-        // POST: Order/Delete/5
+        // POST: Ingredient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Orders == null)
+            if (_context.Ingredients == null)
             {
-                return Problem("Entity set 'CakeShopContext.Orders'  is null.");
+                return Problem("Entity set 'CakeShopContext.Ingredients'  is null.");
             }
-            var order = await _context.Orders.FindAsync(id);
-            if (order != null)
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            if (ingredient != null)
             {
-                _context.Orders.Remove(order);
+                _context.Ingredients.Remove(ingredient);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrderExists(int id)
+        private bool IngredientExists(int id)
         {
-          return _context.Orders.Any(e => e.OrderId == id);
+          return _context.Ingredients.Any(e => e.Id == id);
         }
     }
 }

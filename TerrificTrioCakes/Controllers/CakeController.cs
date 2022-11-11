@@ -22,6 +22,7 @@ namespace TerrificTrioCakes.Controllers
         public async Task<IActionResult> Index()
         {
             var cakeShopContext = _context.Cakes.Include(c => c.Categories);
+           
             return View(await cakeShopContext.ToListAsync());
         }
 
@@ -36,6 +37,8 @@ namespace TerrificTrioCakes.Controllers
             var cake = await _context.Cakes
                 .Include(c => c.Categories)
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var listOfIngredients = await _context.CakeIngredients.Where(x => x.CakeId == id).Select(x => x.Ingredient.Name).ToListAsync();
+            ViewBag.CakeIngredients = listOfIngredients;
             if (cake == null)
             {
                 return NotFound();

@@ -26,8 +26,9 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+           <img alt="@Model.Name" src="~/images/@Model.Image" height="800" width="800" class="img-responsive" >
+@*            @Html.DisplayFor(model => model.Image)
+*@        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
@@ -45,6 +46,22 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Categories.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CakeIngredients)
+        </dt>
+        <dd class = "col-sm-10">
+             @if (ViewBag.CakeIngredients.Count > 0)
+        {
+                @foreach (var ing in ViewBag.CakeIngredients)
+            {
+                    <div> @ing </div>
+                }
+            }
+            else
+            {
+                <div>No @Html.DisplayNameFor(Model => Model.CakeIngredients) was found. </div>
+            }
         </dd>
     </dl>
 </div>

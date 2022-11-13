@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Cakes</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,7 +16,7 @@
         <div class="col">
             <div class="card">
                 <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="~/images/@item.Image" class="card-img-top">
+                    <img src="~/images/@item.Image" class="card-img-top">                    
                 </a>
                 <div class="card-body text-center card-body-header">
                     <a asp-action="Details" asp-route-id="@item.Id">
@@ -43,7 +43,7 @@
     }
 </div>
 
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -103,4 +103,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@

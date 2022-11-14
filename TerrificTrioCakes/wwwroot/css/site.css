@@ -131,10 +131,10 @@ body {
 }
 
 .carousel-inner > div {
-    max-height: 600px;
+    max-height: 500px;
 }
 .carousel-inner > div img {
-    max-height: 600px;
+    max-height: 500px;
     object-fit: cover;
 }
 
@@ -145,6 +145,10 @@ body {
     top: 0;
     left: 0;
     border-radius: 0;
+}
+.card-body-header h6.cake-cat {
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
 /*=================================*/
@@ -286,4 +290,86 @@ body {
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
+}
+.home-featured-product-title {
+    padding-top: 50px;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+.home-featured-product-title h2 {
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.home-featured-products {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+.search-products .card {
+    border: none;
+}
+.search-products .card .card-body input.form-control {
+    padding: 0 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.search-products .card .card-body button.btn {
+    padding: 3px 20px 4px 20px;
+    font-size: 16px;
+    border-radius: 0;
+    background: #333;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.search-products .card .card-body button.btn:hover {
+    background: #fff;
+    color: #333;
+}
+.search-products .card .card-body {
+    padding-bottom: 30px;
+}
+.products-page {
+    margin-top: 0px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+.navbar-light .navbar-brand.site-logo {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    border: 2px solid;
+    padding: 3px 5px;
+    color: #fff;
+}
+.navbar-light .navbar-brand.site-logo:hover {
+    color: rgba(255,255,255,0.5);
+}
+nav.main-nav {
+    padding: 0;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 50%) !important;
+}
+nav.main-nav > div {
+    background: #333;
+    padding: 10px 15px;
+}
+nav.main-nav.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 5px 15px;
+    font-weight: 600;
+}
+nav.main-nav.navbar-light .navbar-nav .nav-link:hover {
+    background:#fff;
+    color: #333;
+}
+#carouselExampleIndicators {
+    padding-top: 20px;
+}
+.products-pagination {
+    padding-top: 20px;
+}
+
+
+@media (min-width: 768px) {
+    .row-cols-md-3.home-featured-products > .col {
+        width: 33.3333333333%;
+    }
 }

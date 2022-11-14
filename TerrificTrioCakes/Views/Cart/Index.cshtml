@@ -68,7 +68,7 @@
             <div class="title">
                 <div class="row">
                     <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    <div class="col align-self-center text-right text-muted">@ViewBag.Cart.Count items</div>
                 </div>
             </div>    
             @if(ViewBag.Cart == null)
@@ -83,37 +83,25 @@
                             <div class="col-2"><img class="img-fluid" src="~/images/@item.Cake.Image"></div>
                             <div class="col">
                                 <div class="row text-muted">@item.Cake.Name</div>
-                                @*<div class="row">Cotton T-shirt</div>*@
                             </div>
                             <div class="col">
-                                <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                                <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="decrese"> - </a><a href="#" class="border">@item.Quantity</a><a  asp-route-id="@item.Cake.Id" asp-action="add"> + </a>
                             </div>
-                            <div class="col">$ @item.Cake.Price <span class="close">&#10005;</span></div>
+                            <div class="col">$ @item.Cake.Price <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove"> <span class="close">&#10005;</span></a></div>
                         </div>
                     </div>
                 }
             }
-            <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
         <div class="col-md-4 summary">
             <div><h5><b>Summary</b></h5></div>
             <hr>
             <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS 3</div>
-                <div class="col text-right">&euro; 132.00</div>
+                <div class="col" style="padding-left:0;"> Total</div>
+                <div class="col text-right">@ViewBag.total</div>
             </div>
-            @*<form>
-                <p>SHIPPING</p>
-                <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
-                <p>GIVE CODE</p>
-                <input id="code" placeholder="Enter your code">
-            </form>*@
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&euro; 137.00</div>
-            </div>
-            <a asp-controller="Order" asp-action="CheckOut" >Proceed to Buy</a>
-            <button class="btn" asp-controller="Order" asp-action="CheckOut">CHECKOUT</button>
+            <a asp-controller="Order" asp-action="CheckOut"><button class="btn">CHECKOUT</button></a>
         </div>
     </div>            
 </div>

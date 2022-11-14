@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<TerrificTrioCakes.Models.DB.Cake>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -38,4 +40,32 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+
+<div class="home-featured-product-title">
+    <h2 class="text-center"> On Specials </h2>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 product-row home-featured-products">
+    @foreach(var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="~/images/@item.Image" class="card-img-top">                    
+                </a>
+                <div class="card-body text-center card-body-header">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <h6 class="card-title cake-cat">@Html.DisplayFor(modelItem => item.Categories.Name) Cake</h6>
+                    </a>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>                              
+                </div>
+                <div class="card-body  d-flex justify-content-evenly card-body-footer">
+                    <h6 class="card-title">$@Html.DisplayFor(modelItem => item.Price) <span class="currency">nzd</span></h6>
+                    <a asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id" class="btn btn-primary">Add To Cart</a>                    
+                </div>
+            </div>
+        </div>
+    }
 </div>

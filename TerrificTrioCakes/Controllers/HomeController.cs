@@ -1,21 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using TerrificTrioCakes.Models;
+using TerrificTrioCakes.Models.DB;
 
 namespace TerrificTrioCakes.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly CakeShopContext _context;
+
+        public HomeController(CakeShopContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var cakeShopContext = _context.Cakes.Where(ck=>ck.IsFeatured == true).Include(c => c.Categories);
+
+            return View(await cakeShopContext.ToListAsync());
         }
 
         public IActionResult Privacy()

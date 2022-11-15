@@ -4,6 +4,7 @@
     ViewData["Title"] = "Category";
 }
 
+
 <h1 style="font-family:verdana; color:darkseagreen" >Category</h1>
 <br />
 
@@ -15,7 +16,7 @@
     </p>
 }
 
-
+<div class="tilesWrap">
 <table class="table">
     <thead>
         <tr>
@@ -35,7 +36,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.Raw(item.Description)
             </td>
             <td>
 
@@ -50,6 +51,7 @@
                 @*only admin can delete a category*@
                 @if (User.IsInRole("Admin"))
                 {
+                    <a> | </a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 }
                 
@@ -58,3 +60,4 @@
 }
     </tbody>
 </table>
+</div>

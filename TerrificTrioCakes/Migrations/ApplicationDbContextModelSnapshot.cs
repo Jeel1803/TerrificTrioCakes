@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TerrificTrioCakes.Data;
 
 #nullable disable
 
-namespace TerrificTrioCakes.Data.Migrations
+namespace TerrificTrioCakes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221115200944_SeedUserRoles")]
-    partial class SeedUserRoles
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,22 +51,22 @@ namespace TerrificTrioCakes.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "62f7109f-b929-42cd-92c2-4ccb08803f7d",
-                            ConcurrencyStamp = "80e1f706-68bc-4526-937d-e6e624ed339d",
+                            Id = "84ad5e7a-8ccd-414f-97f7-10012157d6f1",
+                            ConcurrencyStamp = "b7cc8086-2352-41f3-933e-732493d90fc3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "cbdc7b8f-a42e-4adb-bd0f-329b2dbcab28",
-                            ConcurrencyStamp = "82dfb0a4-9273-4554-9f98-3cb271f792d0",
+                            Id = "67d6d2c1-4276-4ca8-8546-eeb93c334878",
+                            ConcurrencyStamp = "f2c166e7-87b2-47de-8fbe-bd809c77a628",
                             Name = "Staff",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
-                            Id = "c36ecd80-aec9-4677-b33f-e1e6b7ddc9f4",
-                            ConcurrencyStamp = "d475c953-0014-4e34-aaee-ef442b4385c5",
+                            Id = "ee8279f9-cb4f-4b6f-9051-109fbd460aed",
+                            ConcurrencyStamp = "3e34072d-af00-461c-a443-53a36250c8b5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -97,121 +95,6 @@ namespace TerrificTrioCakes.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "9659aeae-5e19-4fe8-93b0-5d4750c0c3de",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "ff1993c8-9a93-4fd5-bb04-5841a580ece5",
-                            Email = "admin@mail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@MAIL.COM",
-                            NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOkKCgorp7Ep7yD2gIaogrH1m1KSqmAcIOwQSfYJKiqrjUn5ebYppUfYM/+5oSzqpw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "c1d27da2-a0db-414d-a36d-51f788464019",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@mail.com"
-                        },
-                        new
-                        {
-                            Id = "6419f98d-a17b-40ca-9287-e7ff5f544922",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0efa3bff-e7f4-4af0-b616-106bd3b245cf",
-                            Email = "staff@mail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "STAFF@MAIL.COM",
-                            NormalizedUserName = "STAFF@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGY9iLXIQdMYLSSJQhAB//vr3tI/qZ1BbljSjrI+/sTlKzJy3icD38dVDWhTNhUXWQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "522855e5-e65c-49db-b4e4-ea892cbe0f5d",
-                            TwoFactorEnabled = false,
-                            UserName = "staff@mail.com"
-                        },
-                        new
-                        {
-                            Id = "5131373d-87da-47b0-ba8a-ac5a0f205116",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8533129-783f-401b-9df9-21ed21228d60",
-                            Email = "user@mail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USER@MAIL.COM",
-                            NormalizedUserName = "USER@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECd8oBBxnYgfj/gv6ViIA7kC7gHMdIU23uC9yAXvyBmVPtbEdz8uySAtyS2HEdhC6A==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "76cc9451-4286-414f-a5cb-e84f111ab8db",
-                            TwoFactorEnabled = false,
-                            UserName = "user@mail.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -276,23 +159,6 @@ namespace TerrificTrioCakes.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "9659aeae-5e19-4fe8-93b0-5d4750c0c3de",
-                            RoleId = "62f7109f-b929-42cd-92c2-4ccb08803f7d"
-                        },
-                        new
-                        {
-                            UserId = "6419f98d-a17b-40ca-9287-e7ff5f544922",
-                            RoleId = "cbdc7b8f-a42e-4adb-bd0f-329b2dbcab28"
-                        },
-                        new
-                        {
-                            UserId = "5131373d-87da-47b0-ba8a-ac5a0f205116",
-                            RoleId = "c36ecd80-aec9-4677-b33f-e1e6b7ddc9f4"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -316,6 +182,83 @@ namespace TerrificTrioCakes.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TerrificTrioCakes.Models.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Membership")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -327,7 +270,7 @@ namespace TerrificTrioCakes.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TerrificTrioCakes.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -336,7 +279,7 @@ namespace TerrificTrioCakes.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TerrificTrioCakes.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -351,7 +294,7 @@ namespace TerrificTrioCakes.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TerrificTrioCakes.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -360,7 +303,7 @@ namespace TerrificTrioCakes.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TerrificTrioCakes.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

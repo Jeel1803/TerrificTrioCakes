@@ -12,9 +12,18 @@
 @if (User.IsInRole("Admin") | User.IsInRole("Staff"))
 {
     <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success btn-lg"> <i class="fa-sharp fa-solid fa-circle-plus"></i></a>
     </p>
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*using fontawesome kit for icons styling*@
+    <script src="https://kit.fontawesome.com/1269185472.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
 
 <div class="tilesWrap">
 <table class="table">
@@ -43,16 +52,15 @@
                 @*admin and staff can edit and show details*@
                 @if (User.IsInRole("Admin") | User.IsInRole("Staff"))
                 {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                    <a> | </a>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i></a> 
+                    
                 }
 
                 @*only admin can delete a category*@
                 @if (User.IsInRole("Admin"))
                 {
-                    <a> | </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can fa-shake"></i></a>
                 }
                 
             </td>
@@ -61,3 +69,5 @@
     </tbody>
 </table>
 </div>
+</body>
+</html>

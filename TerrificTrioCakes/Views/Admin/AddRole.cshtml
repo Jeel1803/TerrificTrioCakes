@@ -5,7 +5,7 @@
     ViewData["Title"] = "Add Role";
 }
 
-<h1 style="font-family:verdana; color:darkseagreen">Add role</h1>
+<h1 style="font-family:verdana; color:darkseagreen">Add Role</h1>
 
 <form asp-action="AddRole" method="post" class="mt-3">
     <div class="form-group row">
@@ -15,9 +15,9 @@
             <span asp-validation-for="RoleName" class="text-danger"></span>
         </div>
     </div>
-
+    <br />
     <div class="form-group col-4">
-        <button type="submit" class="btn btn-primary">Add role</button>
+        <button type="submit" class="btn btn-success btn-primary">Add Role</button>
         <div>
             <a asp-action="ListAllRoles" class="btn btn-warning my-3"><i class="fa-solid fa-angles-left"></i> Back</a>
         </div>

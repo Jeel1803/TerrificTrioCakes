@@ -29,7 +29,11 @@ namespace TerrificTrioCakes.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                cake = cake.Where(ck => ck.Name.Contains(searchString));
+                cake = cake.Where(ck => ck.Name.Contains(searchString)).Include(cat=> cat.Categories);
+            }
+            else
+            {
+                cake = _context.Cakes.Include(c => c.Categories);
             }
             return View(cake.ToPagedList(pageNumber, 6));
 

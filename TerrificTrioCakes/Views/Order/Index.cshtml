@@ -6,7 +6,55 @@
 
 <h1>Index</h1>
 
-<p>
+<div class="card cart-card-cls">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+@*                    <div class="col align-self-center text-right text-muted">@ViewBag.Cart.Count items</div>
+*@                </div>
+            </div>    
+            @if(ViewBag.Cart == null)
+            {
+                <p>Cart is Empty! Please add items to cart first</p>
+            }
+            else{
+                @foreach (var item in ViewBag.Cart)
+                {
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="~/images/@item.Cake.Image"></div>
+                            <div class="col">
+                                <div class="row text-muted">@item.Cake.Name</div>
+                            </div>
+                            <div class="col">
+                                <a href="#" class="border">@item.Quantity</a>
+                            </div>
+                            <div class="col">$ @item.Cake.Price <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove"> <span class="close">&#10005;</span></a></div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <div><h5><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;"> Total</div>
+                <div class="col text-right">@ViewBag.total</div>
+            </div>
+            <div id="paypal-button-container"></div>
+
+             
+        </div>
+    </div>            
+</div>
+
+
+
+@*<p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -47,11 +95,10 @@
 </table>
 <a asp-controller="Cake" asp-action="index">Continue Shopping</a>
 <a asp-controller="Order" asp-action="generatePDF">Download PDF</a>
-
+*@
 
 
 <script src="https://www.paypal.com/sdk/js?client-id=ATNwtOFAgffDhMfTE8dGXlau9W8Gv82HLENDNmAfobf55lKFzR1u48MWIaTOK4s6V0Rancd7L8HJSox3"></script>
-<div id="paypal-button-container"></div>
 <script>
     paypal.Buttons({
         createOrder: function (data, actions) {

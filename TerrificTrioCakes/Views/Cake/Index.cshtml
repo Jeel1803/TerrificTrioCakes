@@ -1,4 +1,8 @@
-﻿@model IEnumerable<TerrificTrioCakes.Models.DB.Cake>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@model IPagedList<TerrificTrioCakes.Models.DB.Cake>
 
 @{
     ViewData["Title"] = "Cakes";
@@ -16,15 +20,19 @@
 
 <div class="row justify-content-center search-products">
     <div class="col-12 col-md-10 col-lg-8">
-        <form class="card card-sm">
+        <form class="card card-sm" id="searchForm" action="/Cake/Index" method="get" autocomplete="off">
             <div class="card-body row no-gutters align-items-center">
                 <div class="col-auto">
                     <i class="fas fa-search h4 text-body"></i>
                 </div>
                 <!--end of col-->
                 <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                    <input class="form-control form-control-lg form-control-borderless"  type="text" id="searchString" name="searchString"
+                   autocomplete="off" onkeyup="XAjaxRequest(this.value);" placeholder="Search topics or keywords">
                 </div>
+                </br>
+                            <div id="autoSuggestContainer" style="position:absolute;display:none;z-index:100;"></div>
+
                 <!--end of col-->
                 <div class="col-auto">
                     <button class="btn btn-lg btn-success" type="submit">Search</button>
@@ -58,17 +66,17 @@
                 </div>
             </div>
         </div>
-
-        @*<div class="card" style="width: 18rem;">
-          <img src="~/images/@item.Image" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>*@
     }
 </div>
+
+@*code for display number of pages *@
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { Page = page }),
+        new PagedListRenderOptions
+        {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+    })
 
 <nav aria-label="Page navigation example" class="products-pagination">
   <ul class="pagination justify-content-end">
@@ -83,6 +91,43 @@
     </li>
   </ul>
 </nav>
+
+
+@*Javascript for the auto suggestion*@
+<script type="text/javascript">
+    function XAjaxRequest(searchString) {
+        if (searchString.length < 1) {
+            //clearing the textbox box to enter new search String
+            document.getElementById("autoSuggestContainer").innerHTML = "";
+            return;
+        }
+        var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        var url = "/Cake/IndexAJAX?searchString=" + searchString;
+        xmlhttp.open("GET", url, false); //opening connection
+        xmlhttp.send(); //sending request to IndexAJAX method in the author controller
+        document.getElementById("autoSuggestContainer").style.display = "block";
+        //clearing the container each time to avoid the list of suggested output growing each time
+        document.getElementById("autoSuggestContainer").innerHTML = "";
+        var messageObject = JSON.parse(xmlhttp.responseText); //receiving the text response
+        var autoSuggestions = "";
+
+        for (var i = 0; i < messageObject.length; i++) {
+            //code to display the block of the suggested output
+            autoSuggestions +=
+                "<input type=\"button\" value=\"" + messageObject[i].Name +"\" "
+                + "onclick=\"document.getElementById('searchString').value = this.value; document.getElementById('searchForm').submit();\" "
+                + "style =\"width: 280px\" />";
+            autoSuggestions += "<br />";
+        }
+        //placing the clickable generated HTML buttons in the display div
+        document.getElementById("autoSuggestContainer").innerHTML = autoSuggestions;
+    }
+</script>
+
+
+
+
 
 @*<table class="table">
     <thead>

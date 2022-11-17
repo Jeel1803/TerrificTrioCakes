@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using TerrificTrioCakes.Models.DB;
+using X.PagedList;
 
 namespace TerrificTrioCakes.Controllers
 {
@@ -19,11 +21,31 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Cake
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, int? page)
         {
-            var cakeShopContext = _context.Cakes.Include(c => c.Categories);
+            var pageNumber = page ?? 1;
+
+            var cake = from c in _context.Cakes select c;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                cake = cake.Where(ck => ck.Name.Contains(searchString));
+            }
+            return View(cake.ToPagedList(pageNumber, 6));
+
+
+            //var cakeShopContext = _context.Cakes.Include(c => c.Categories);
            
-            return View(await cakeShopContext.ToListAsync());
+            //return View(await cakeShopContext.ToListAsync());
+        }
+
+        public string IndexAJAX(string searchString)
+        {
+            string sql = "SELECT * FROM Cakes WHERE Name LIKE @p0"; 
+            string wrapString = "%" + searchString + "%";
+            List<Cake> cakes = _context.Cakes.FromSqlRaw(sql, wrapString).ToList();
+            string json = JsonConvert.SerializeObject(cakes);
+            return json;
         }
 
         // GET: Cake/Details/5

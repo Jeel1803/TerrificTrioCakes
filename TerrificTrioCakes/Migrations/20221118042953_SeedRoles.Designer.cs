@@ -12,7 +12,7 @@ using TerrificTrioCakes.Data;
 namespace TerrificTrioCakes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221118014030_SeedRoles")]
+    [Migration("20221118042953_SeedRoles")]
     partial class SeedRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,22 +53,22 @@ namespace TerrificTrioCakes.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "537904a1-0aa8-4124-bdf9-b4472539dab6",
-                            ConcurrencyStamp = "f8f45223-9105-4915-9e89-712bf70c0e3e",
+                            Id = "4624eb5e-ea7d-4943-bcd4-0c2570663737",
+                            ConcurrencyStamp = "33143660-2890-4002-bafa-21c93da4ef00",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "02214370-79ee-4ad3-904e-ccb3176e6f74",
-                            ConcurrencyStamp = "077ed5a1-9c73-4d51-84ff-3f61b05d6360",
+                            Id = "23a0db07-755c-47f8-9907-dd3978d3783a",
+                            ConcurrencyStamp = "5292c118-9f17-4ac6-ba80-10e167c1a542",
                             Name = "Staff",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
-                            Id = "a6ccd01c-2afa-4496-9d7a-4701602f63cf",
-                            ConcurrencyStamp = "2f708980-bf3e-4758-8b00-66887a6c858c",
+                            Id = "29d14e24-e3b2-4804-87db-f0f84e107723",
+                            ConcurrencyStamp = "b06483a7-3aaf-48a7-89b4-f489c8a8925f",
                             Name = "User",
                             NormalizedName = "USER"
                         });

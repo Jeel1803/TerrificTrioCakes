@@ -7,6 +7,9 @@ namespace TerrificTrioCakes.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext()
+        {
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -19,10 +22,10 @@ namespace TerrificTrioCakes.Data
 
 
             List<IdentityRole> roles = new List<IdentityRole>() {
-                 new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
-                 new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },
-                new IdentityRole { Name = "User", NormalizedName = "USER" },
-                 };
+                     new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
+                     new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },
+                    new IdentityRole { Name = "User", NormalizedName = "USER" },
+                     };
             builder.Entity<IdentityRole>().HasData(roles);
 
             // Create USERS

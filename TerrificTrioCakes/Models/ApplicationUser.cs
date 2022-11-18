@@ -11,6 +11,7 @@ namespace TerrificTrioCakes.Models
         
         public string LastName { get; set; }
         
+
         public string Membership { get; set; }
         
         public DateTime MembershipExpiry { get; set; }

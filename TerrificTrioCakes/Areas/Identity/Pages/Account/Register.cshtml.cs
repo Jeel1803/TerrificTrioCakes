@@ -109,6 +109,8 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
 
             [Required]
             public string Membership { get; set; }
+            public string MembershipExpiry { get; set; }
+            public string MembershipDuration { get; set; }
         }
 
 
@@ -116,6 +118,7 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -130,8 +133,17 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Membership = Input.Membership
+                    Membership = Input.Membership,
+                    MembershipDuration = int.Parse(Input.MembershipDuration),
+                    MembershipExpiry = DateTime.Now.AddYears(1)
                 };
+
+                if(user.MembershipDuration == 6)
+                    user.MembershipExpiry = DateTime.Now.AddMonths(6);
+                else if (user.MembershipDuration == 12)
+                    user.MembershipExpiry = DateTime.Now.AddMonths(12);
+                else if (user.MembershipDuration == 18)
+                    user.MembershipExpiry = DateTime.Now.AddMonths(18);
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

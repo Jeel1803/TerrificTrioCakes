@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TerrificTrioCakes.Migrations
 {
-    public partial class SeedUsers : Migration
+    public partial class SeedRoles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,6 +31,8 @@ namespace TerrificTrioCakes.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Membership = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MembershipExpiry = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MembershipDuration = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -160,17 +162,17 @@ namespace TerrificTrioCakes.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "67d6d2c1-4276-4ca8-8546-eeb93c334878", "f2c166e7-87b2-47de-8fbe-bd809c77a628", "Staff", "STAFF" });
+                values: new object[] { "02214370-79ee-4ad3-904e-ccb3176e6f74", "077ed5a1-9c73-4d51-84ff-3f61b05d6360", "Staff", "STAFF" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "84ad5e7a-8ccd-414f-97f7-10012157d6f1", "b7cc8086-2352-41f3-933e-732493d90fc3", "Admin", "ADMIN" });
+                values: new object[] { "537904a1-0aa8-4124-bdf9-b4472539dab6", "f8f45223-9105-4915-9e89-712bf70c0e3e", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ee8279f9-cb4f-4b6f-9051-109fbd460aed", "3e34072d-af00-461c-a443-53a36250c8b5", "User", "USER" });
+                values: new object[] { "a6ccd01c-2afa-4496-9d7a-4701602f63cf", "2f708980-bf3e-4758-8b00-66887a6c858c", "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

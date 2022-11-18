@@ -51,22 +51,22 @@ namespace TerrificTrioCakes.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "84ad5e7a-8ccd-414f-97f7-10012157d6f1",
-                            ConcurrencyStamp = "b7cc8086-2352-41f3-933e-732493d90fc3",
+                            Id = "537904a1-0aa8-4124-bdf9-b4472539dab6",
+                            ConcurrencyStamp = "f8f45223-9105-4915-9e89-712bf70c0e3e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "67d6d2c1-4276-4ca8-8546-eeb93c334878",
-                            ConcurrencyStamp = "f2c166e7-87b2-47de-8fbe-bd809c77a628",
+                            Id = "02214370-79ee-4ad3-904e-ccb3176e6f74",
+                            ConcurrencyStamp = "077ed5a1-9c73-4d51-84ff-3f61b05d6360",
                             Name = "Staff",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
-                            Id = "ee8279f9-cb4f-4b6f-9051-109fbd460aed",
-                            ConcurrencyStamp = "3e34072d-af00-461c-a443-53a36250c8b5",
+                            Id = "a6ccd01c-2afa-4496-9d7a-4701602f63cf",
+                            ConcurrencyStamp = "2f708980-bf3e-4758-8b00-66887a6c858c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -218,6 +218,12 @@ namespace TerrificTrioCakes.Migrations
                     b.Property<string>("Membership")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MembershipDuration")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("MembershipExpiry")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

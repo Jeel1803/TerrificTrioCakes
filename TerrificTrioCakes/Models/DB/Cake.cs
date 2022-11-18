@@ -8,7 +8,7 @@ namespace TerrificTrioCakes.Models.DB
         public Cake()
         {
             CakeIngredients = new HashSet<CakeIngredient>();
-            CartItems = new HashSet<CartItem>();
+            CartItems = new HashSet<CartItemFromDatabase>();
             OrderDetails = new HashSet<OrderDetail>();
         }
 
@@ -22,7 +22,7 @@ namespace TerrificTrioCakes.Models.DB
 
         public virtual Category Categories { get; set; } = null!;
         public virtual ICollection<CakeIngredient> CakeIngredients { get; set; }
-        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<CartItemFromDatabase> CartItems { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

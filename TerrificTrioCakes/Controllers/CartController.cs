@@ -70,7 +70,8 @@ namespace TerrificTrioCakes.Controllers
             int index = isExist(id);
             if (index != -1)
             {
-                cart[index].Quantity--;
+                if (cart[index].Quantity > 1)
+                    cart[index].Quantity--;
             }
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");

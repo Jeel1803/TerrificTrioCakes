@@ -4,74 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-
-<h1 style="font-family:verdana; color:darkseagreen">Cart</h1>
-
-@*
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-        <th>Option</th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Photo</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Sub Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(ViewBag.Cart == null)
-        {
-            <p>Cart is Empty! Please add items to cart first</p>
-        }
-        else{
-             @foreach(var item in ViewBag.Cart)
-        {
-        <tr>
-            <td><a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove">Remove</a></td>
-            <td>@item.Cake.Id</td>
-            <td>@item.Cake.Name</td>
-            <td><img src="~/images/@item.Cake.Image" width="60" /></td>
-            <td>@item.Cake.Price</td>
-            <td>@item.Quantity</td>
-            <td>@(item.Cake.Price * item.Quantity)</td>
-            <td>
-                <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="decrese"> <input type='button' value='-' class='qtyminus minus' field='quantity' /> </a>
-                     <input type='@item.Quantity' name='quantity' value='@item.Quantity' class='qty' />
-                     <a  asp-route-id="@item.Cake.Id" asp-action="add"> <input type='button' value='+' class='qtyplus plus' field='quantity' /> </a>
-                    <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove">Remove</a>
-            </td>
-                   
-
-
-        </tr>
-    }
-    <tr>
-        <td>@ViewBag.total</td>
-         <td><a asp-controller="Order" asp-action="CheckOut" >Proceed to Buy</a></td>
-    </tr>
-        }
-       
-</table>
-<a asp-controller="Cake" asp-action="index">Continue Shopping</a>*@
-
-@*<pre>
-    ==============================================================================
-</pre>*@
-
 <div class="card cart-card-cls">
     <div class="row">
         <div class="col-md-8 cart">
             <div class="title">
                 <div class="row">
                     <div class="col"><h4><b>Shopping Cart</b></h4></div>
-@*                    <div class="col align-self-center text-right text-muted">@ViewBag.Cart.Count items</div>
-*@                </div>
+               </div>
             </div>    
             @if(ViewBag.Cart == null)
             {
@@ -107,6 +46,5 @@
         </div>
     </div>            
 </div>
-
 
 

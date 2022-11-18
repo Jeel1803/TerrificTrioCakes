@@ -25,7 +25,7 @@ namespace TerrificTrioCakes.Models.DB
         public virtual DbSet<Cake> Cakes { get; set; } = null!;
         public virtual DbSet<CakeIngredient> CakeIngredients { get; set; } = null!;
         public virtual DbSet<Cart> Carts { get; set; } = null!;
-        public virtual DbSet<CartItem> CartItems { get; set; } = null!;
+        public virtual DbSet<CartItemFromDatabase> CartItems { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Ingredient> Ingredients { get; set; } = null!;
         public virtual DbSet<MemberShip> MemberShips { get; set; } = null!;
@@ -173,7 +173,7 @@ namespace TerrificTrioCakes.Models.DB
                 entity.Property(e => e.CartId).HasColumnName("cartId");
             });
 
-            modelBuilder.Entity<CartItem>(entity =>
+            modelBuilder.Entity<CartItemFromDatabase>(entity =>
             {
                 entity.Property(e => e.CartItemId).HasColumnName("CartItemID");
 

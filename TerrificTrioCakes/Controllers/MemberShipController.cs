@@ -27,21 +27,38 @@ namespace TerrificTrioCakes.Controllers
         // GET: Membership
         public async Task<IActionResult> Index()
         {
-
-            var user = _context.AspNetUsers.ToList() ;
-            List<MemberShip> members = new List<MemberShip>();
-            foreach (var u in user)
+            if (User.IsInRole("Admin"))
             {
-                MemberShip dt = new MemberShip
+                List<MemberShip> members = new List<MemberShip>();
+                var users = _context.AspNetUsers.ToList();
+                foreach (var u in users)
                 {
-                    Membership = u.Membership,
-                    MembershipDuration = u.MembershipDuration,
-                    MembershipExpiry = u.MembershipExpiry
-                };
-                members.Add(dt);
-            }
+                    MemberShip member = new MemberShip
+                    {
+                        Membership = u.Membership,
+                        MembershipDuration = u.MembershipDuration,
+                        MembershipExpiry = u.MembershipExpiry
+                    };
+                    members.Add(member);
+                }
 
-            return View(members);
+                return View(members);
+            }
+            else if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+                MemberShip member = new MemberShip()
+                {
+                    Membership = user.Membership,
+                    MembershipDuration = user.MembershipDuration,
+                    MembershipExpiry = user.MembershipExpiry
+                };
+
+                return View(member);
+            }
+            else
+                return View();
         }
 
         // GET: Membership/Details/5

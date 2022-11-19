@@ -46,10 +46,18 @@
                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="ListAllRoles">Roles</a>
                           </li>
                         }
-                        @if (User.IsInRole("Admin"))
+                        
+                        @if (!User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Membership" asp-action="Index">Membership</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="AspNetUser" asp-action="Index">Membership Management</a>
                             </li>
                         }
                        

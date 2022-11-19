@@ -14,11 +14,36 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 
-<h1>Add/Renew Memberships</h1>
+<style>
+.alert {
+  margin-top:20px;
+  padding: 15px;
+  background-color: #f44336;
+  color: white;
+}
 
-<p>
-    <a  class="btn btn-success btn-primary mb-2" asp-action="Create"> <i class="fa-solid fa-users"></i>Add New Membership</a>
-</p>
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+
+<h3>Your Membership Details</h3>
+<br />
+<br />
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +70,7 @@
     </thead>
     <tbody>
 
-         @if(User.Identity.IsAuthenticated & User.IsInRole("Admin"))
+         @if(User.Identity.IsAuthenticated)
         {
             @foreach (var item in Model)
             {
@@ -68,13 +93,16 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.MembershipDuration)
                     </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+
+
+
+
+ <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Note!</strong> Please Contact Us to Renew/Cancel Your Membership!.
+        </div>

@@ -6,10 +6,7 @@ namespace TerrificTrioCakes.Models.DB
 {
     public partial class MemberShip
     {
-        public MemberShip()
-        {
-            AspNetUsers = new HashSet<AspNetUser>();
-        }
+        
 
         public string Id { get; set; } = null!;
 
@@ -26,6 +23,5 @@ namespace TerrificTrioCakes.Models.DB
         [Display(Name = "Membership Duration")]
         public int MembershipDuration { get; set; }
 
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

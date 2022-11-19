@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TerrificTrioCakes.Models.DB
 {
@@ -14,11 +15,18 @@ namespace TerrificTrioCakes.Models.DB
         }
 
         public string Id { get; set; } = null!;
+
+        [Display(Name = "First Name")]
         public string FirstName { get; set; } = null!;
+        [Display(Name = "Last Name")]
         public string LastName { get; set; } = null!;
         public string Membership { get; set; } = null!;
+        [Display(Name = "Membership Expiry")]
         public DateTime MembershipExpiry { get; set; }
+        [Display(Name = "Membership Duration")]
         public int MembershipDuration { get; set; }
+
+        [Display(Name = "User Name")]
         public string? UserName { get; set; }
         public string? NormalizedUserName { get; set; }
         public string? Email { get; set; }
@@ -34,7 +42,6 @@ namespace TerrificTrioCakes.Models.DB
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
 
-        public virtual MemberShip MembershipDurationNavigation { get; set; } = null!;
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }

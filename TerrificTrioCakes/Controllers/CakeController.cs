@@ -21,25 +21,46 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Cake
-        public async Task<IActionResult> Index(string searchString, int? page)
+        public async Task<IActionResult> Index(string searchString, int? page, string filter)
         {
             var pageNumber = page ?? 1;
+            //var cake = from c in _context.Cakes select c;
 
-            var cake = from c in _context.Cakes select c;
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                cake = cake.Where(ck => ck.Name.Contains(searchString)).Include(cat=> cat.Categories);
+               var cake = _context.Cakes.Where(ck => ck.Name.Contains(searchString)).Include(cat=> cat.Categories);
+                return View(cake.ToPagedList(pageNumber, 6));
+
             }
-            else
+            if (filter == "Standard")
             {
-                cake = _context.Cakes.Include(c => c.Categories);
+                var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Standard").Include(c => c.Categories);
+                return View(cake.ToPagedList(pageNumber, 10));
             }
-            return View(cake.ToPagedList(pageNumber, 6));
+            if (filter == "Vegan")
+            {
+                var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Vegan").Include(c => c.Categories);
+                return View(cake.ToPagedList(pageNumber, 10));
+            }
+            if (filter == "Eggless")
+            {
+                var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Eggless").Include(c => c.Categories);
+                return View(cake.ToPagedList(pageNumber, 10));
+            }
+            if(string.IsNullOrEmpty(searchString))
+            {
+
+                var cake = _context.Cakes.Include(c => c.Categories);
+                return View(cake.ToPagedList(pageNumber, 6));
+            }
+
+
+            return RedirectToAction("Index");
 
 
             //var cakeShopContext = _context.Cakes.Include(c => c.Categories);
-           
+
             //return View(await cakeShopContext.ToListAsync());
         }
 

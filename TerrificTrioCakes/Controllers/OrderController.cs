@@ -21,8 +21,14 @@ namespace TerrificTrioCakes.Controllers
         public IActionResult CheckOut()
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
+            return RedirectToAction("Index");
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-
+        }
+        public IActionResult Clear()
+        {
+            List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            HttpContext.Session.Remove("cart");
             return RedirectToAction("Index");
         }
 

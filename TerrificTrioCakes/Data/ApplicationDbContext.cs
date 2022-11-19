@@ -21,12 +21,12 @@ namespace TerrificTrioCakes.Data
             base.OnModelCreating(builder);
 
 
-            //List<IdentityRole> roles = new List<IdentityRole>() {
-            //         new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
-            //         new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },
-            //        new IdentityRole { Name = "User", NormalizedName = "USER" },
-            //         };
-            //builder.Entity<IdentityRole>().HasData(roles);
+            List<IdentityRole> roles = new List<IdentityRole>() {
+                     new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
+                     new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },
+                    new IdentityRole { Name = "User", NormalizedName = "USER" },
+                     };
+            builder.Entity<IdentityRole>().HasData(roles);
 
             // Create USERS
             //        var passwordHasher = new PasswordHasher<IdentityUser>();

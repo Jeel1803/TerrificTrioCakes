@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TerrificTrioCakes.Migrations.ApplicationDb
 {
-    public partial class SeedRoles : Migration
+    public partial class Roles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -158,6 +158,21 @@ namespace TerrificTrioCakes.Migrations.ApplicationDb
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "10050dfc-843a-4902-92cc-6381e117c0e4", "cc62ac23-1234-4094-a072-073bb7ee6eac", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "5c71a6e2-536f-42f0-84ef-71b2c93dfa8e", "e3bed651-19cc-4230-a740-bf368b0ef70a", "Staff", "STAFF" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "ea03b887-f212-42ed-b29a-e77d3effdf6e", "190390ac-e4c5-4cf7-8186-b1bbf9b54692", "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -108,8 +108,12 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
+            [Display(Name = "Choose Membership Type")]
             public string Membership { get; set; }
+
             public string MembershipExpiry { get; set; }
+
+            [Display(Name = " Choose Membership Duration")]
             public string MembershipDuration { get; set; }
         }
 

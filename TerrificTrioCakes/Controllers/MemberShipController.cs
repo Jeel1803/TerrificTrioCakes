@@ -35,6 +35,9 @@ namespace TerrificTrioCakes.Controllers
                 {
                     MemberShip member = new MemberShip
                     {
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        Email = u.Email,
                         Membership = u.Membership,
                         MembershipDuration = u.MembershipDuration,
                         MembershipExpiry = u.MembershipExpiry
@@ -50,6 +53,9 @@ namespace TerrificTrioCakes.Controllers
 
                 MemberShip member = new MemberShip()
                 {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
                     Membership = user.Membership,
                     MembershipDuration = user.MembershipDuration,
                     MembershipExpiry = user.MembershipExpiry
@@ -104,6 +110,7 @@ namespace TerrificTrioCakes.Controllers
         // GET: Membership/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null || _context.MemberShips == null)
             {
                 return NotFound();

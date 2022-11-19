@@ -162,17 +162,17 @@ namespace TerrificTrioCakes.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "23a0db07-755c-47f8-9907-dd3978d3783a", "5292c118-9f17-4ac6-ba80-10e167c1a542", "Staff", "STAFF" });
+                values: new object[] { "012a248b-ddd4-42c8-a11c-e8145ff01067", "1a22a2cc-85ff-4136-8cb1-2ccf02e012df", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "29d14e24-e3b2-4804-87db-f0f84e107723", "b06483a7-3aaf-48a7-89b4-f489c8a8925f", "User", "USER" });
+                values: new object[] { "049366ce-1092-4e1f-8d69-bc744717a91b", "290b10c4-9b01-43bc-a4ba-2ced1217c1bf", "Staff", "STAFF" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "4624eb5e-ea7d-4943-bcd4-0c2570663737", "33143660-2890-4002-bafa-21c93da4ef00", "Admin", "ADMIN" });
+                values: new object[] { "514dcbae-6182-4941-b1c5-fd6c5bf1db62", "2a4c7b12-4da2-4e1a-961a-4ec4fe24bcc3", "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

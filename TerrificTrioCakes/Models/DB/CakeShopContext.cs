@@ -25,7 +25,7 @@ namespace TerrificTrioCakes.Models.DB
         public virtual DbSet<Cake> Cakes { get; set; } = null!;
         public virtual DbSet<CakeIngredient> CakeIngredients { get; set; } = null!;
         public virtual DbSet<Cart> Carts { get; set; } = null!;
-        public virtual DbSet<CartItemFromDatabase> CartItems { get; set; } = null!;
+        public virtual DbSet<CartItem> CartItems { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Ingredient> Ingredients { get; set; } = null!;
         public virtual DbSet<MemberShip> MemberShips { get; set; } = null!;
@@ -78,6 +78,12 @@ namespace TerrificTrioCakes.Models.DB
                 entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
+
+                entity.HasOne(d => d.MembershipDurationNavigation)
+                    .WithMany(p => p.AspNetUsers)
+                    .HasForeignKey(d => d.MembershipDuration)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AspNetUsers_MemberShip");
 
                 entity.HasMany(d => d.Roles)
                     .WithMany(p => p.Users)
@@ -173,8 +179,10 @@ namespace TerrificTrioCakes.Models.DB
                 entity.Property(e => e.CartId).HasColumnName("cartId");
             });
 
-            modelBuilder.Entity<CartItemFromDatabase>(entity =>
+            modelBuilder.Entity<CartItem>(entity =>
             {
+                entity.ToTable("CartItem");
+
                 entity.Property(e => e.CartItemId).HasColumnName("CartItemID");
 
                 entity.Property(e => e.CakeId).HasColumnName("CakeID");
@@ -189,6 +197,11 @@ namespace TerrificTrioCakes.Models.DB
                     .WithMany(p => p.CartItems)
                     .HasForeignKey(d => d.CakeId)
                     .HasConstraintName("FK_Cart_Cakes");
+
+                entity.HasOne(d => d.Cart)
+                    .WithMany(p => p.CartItems)
+                    .HasForeignKey(d => d.CartId)
+                    .HasConstraintName("FK_CartItems_Cart");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -205,6 +218,8 @@ namespace TerrificTrioCakes.Models.DB
 
             modelBuilder.Entity<MemberShip>(entity =>
             {
+                entity.HasKey(e => e.MembershipDuration);
+
                 entity.ToTable("MemberShip");
 
                 entity.Property(e => e.Membership).HasColumnName("Membership");

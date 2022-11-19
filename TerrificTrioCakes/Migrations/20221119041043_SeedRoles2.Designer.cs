@@ -12,8 +12,8 @@ using TerrificTrioCakes.Data;
 namespace TerrificTrioCakes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221118042953_SeedRoles")]
-    partial class SeedRoles
+    [Migration("20221119041043_SeedRoles2")]
+    partial class SeedRoles2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,29 +49,6 @@ namespace TerrificTrioCakes.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "4624eb5e-ea7d-4943-bcd4-0c2570663737",
-                            ConcurrencyStamp = "33143660-2890-4002-bafa-21c93da4ef00",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "23a0db07-755c-47f8-9907-dd3978d3783a",
-                            ConcurrencyStamp = "5292c118-9f17-4ac6-ba80-10e167c1a542",
-                            Name = "Staff",
-                            NormalizedName = "STAFF"
-                        },
-                        new
-                        {
-                            Id = "29d14e24-e3b2-4804-87db-f0f84e107723",
-                            ConcurrencyStamp = "b06483a7-3aaf-48a7-89b4-f489c8a8925f",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

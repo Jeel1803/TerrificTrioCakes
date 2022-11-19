@@ -4,12 +4,33 @@
     ViewData["Title"] = "Index";
 }
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*using fontawesome kit for icons styling*@
+    <script src="https://kit.fontawesome.com/1269185472.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<h1>Add/Renew Memberships</h1>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a  class="btn btn-success btn-primary mb-2" asp-action="Create"> <i class="fa-solid fa-users"></i>Add New Membership</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Membership)
             </th>
@@ -23,11 +44,21 @@
         </tr>
     </thead>
     <tbody>
-        @if(User.Identity.IsAuthenticated & User.IsInRole("Admin"))
+
+         @if(User.Identity.IsAuthenticated & User.IsInRole("Admin"))
         {
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Membership)
                     </td>
@@ -44,7 +75,6 @@
                     </td>
                 </tr>
             }
-
         }
     </tbody>
 </table>

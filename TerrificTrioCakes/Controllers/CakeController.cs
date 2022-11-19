@@ -21,7 +21,7 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Cake
-        public async Task<IActionResult> Index(string searchString, int? page, string filter)
+        public async Task<IActionResult> Index(string searchString, int? page, string radio)
         {
             var pageNumber = page ?? 1;
             //var cake = from c in _context.Cakes select c;
@@ -33,17 +33,17 @@ namespace TerrificTrioCakes.Controllers
                 return View(cake.ToPagedList(pageNumber, 6));
 
             }
-            if (filter == "Standard")
+            if (radio == "Standard")
             {
                 var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Standard").Include(c => c.Categories);
                 return View(cake.ToPagedList(pageNumber, 10));
             }
-            if (filter == "Vegan")
+            if (radio == "Vegan")
             {
                 var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Vegan").Include(c => c.Categories);
                 return View(cake.ToPagedList(pageNumber, 10));
             }
-            if (filter == "Eggless")
+            if (radio == "Eggless")
             {
                 var cake = _context.Cakes.Where(ct => ct.Categories.Name == "Eggless").Include(c => c.Categories);
                 return View(cake.ToPagedList(pageNumber, 10));

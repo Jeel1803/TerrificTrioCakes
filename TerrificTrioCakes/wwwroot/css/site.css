@@ -374,3 +374,66 @@ nav.main-nav.navbar-light .navbar-nav .nav-link:hover {
     }
 }
 
+/*Contact Us*/
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+    .contact .row .image {
+        flex: 1 1 35rem;
+    }
+
+        .contact .row .image img {
+            width: 100%;
+        }
+
+    .contact .row form {
+        flex: 1 1 50rem;
+        padding: 2rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+        border-radius: .5rem;
+    }
+
+        .contact .row form .inputBox {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+            .contact .row form .inputBox input, .contact .row form textarea {
+                width: 49%;
+                margin: 1rem 0;
+                padding: 1rem;
+                font-size: 1.7rem;
+                color: #333;
+                background: #f7f7f7;
+                text-transform: none;
+            }
+
+        .contact .row form textarea {
+            height: 15rem;
+            resize: none;
+            width: 100%;
+        }
+
+.contact button.btn {
+    padding: 3px 20px 4px 20px;
+    font-size: 16px;
+    border-radius: 0;
+    background: #333;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+    .contact button.btn:hover {
+        background: #fff;
+        color: #333;
+    }
+
+.brand-container {
+    text-align: center;
+}
+

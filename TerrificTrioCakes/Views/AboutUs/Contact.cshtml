@@ -1,4 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Contact Us";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/1269185472.js" crossorigin="anonymous"></script>
 
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="contact" id="contact">
+        <h1 class="heading">
+            <span>c</span>
+            <span>o</span>
+            <span>n</span>
+            <span>t</span>
+            <span>a</span>
+            <span>c</span>
+            <span>t</span>
+            <br /><br />
+            <span>u</span>
+            <span>s</span>
+        </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/contact-img.svg" alt="">
+            </div>
+
+            <form name="contact" action="">
+                <div class="inputBox">
+                    <input name="name" type="text" placeholder="name" required>
+                    <input name="email" type="email" placeholder="email" required>
+                </div>
+                <div class="inputBox">
+                    <input name="phone" type="number" placeholder="number" required>
+                    <input name="subject" type="text" placeholder="subject" required>
+                </div>
+                <textarea name="message" placeholder="message" id="" cols="30" rows="10" required></textarea>
+                <button class="btn btn-lg btn-success" onclick="contactUs()" >Contact Us</button>
+            </form>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25499.89431917176!2d174.85762709823356!3d-36.97431207884736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smit!5e0!3m2!1sen!2snz!4v1668898024586!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </section>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

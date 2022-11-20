@@ -152,6 +152,11 @@ body {
     letter-spacing: 1px;
 }
 
+.privacy {
+    text-align : center
+}
+
+
 /*=================================*/
 
 .cart-card-cls .title {

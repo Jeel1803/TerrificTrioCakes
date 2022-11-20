@@ -29,7 +29,7 @@ namespace TerrificTrioCakes.Controllers
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             HttpContext.Session.Remove("cart");
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
         // GET: Order

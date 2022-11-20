@@ -11,12 +11,12 @@
         <div class="col-md-8 cart">
             <div class="title">
                 <div class="row">
-                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col"><h4><b>Order Confirmation</b></h4></div>
                </div>
             </div>    
             @if(ViewBag.Cart == null)
             {
-                <p>Cart is Empty! Please add items to cart first</p>
+                <p>Order Placed Successfully!!</p>
             }
             else{
                 @foreach (var item in ViewBag.Cart)
@@ -72,17 +72,22 @@
         },
         onApprove: function (data, actions) {
             // This function captures the funds from the transaction.
-            return actions.order.capture().then(function (details) {
+            return actions.order.capture().then(function (details) 
+            {
                 // This function shows a transaction success message to your buyer.
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 const element = document.getElementById('paypal-button-container');
                 element.innerHTML = '<h3>Thank you for your payment!</h3>' +
                     '<br><h4>Transaction completed by ' + details.payer.name.given_name + '</h4>';
+                    window.location.href = '@Url.Action("Clear","Order")';
+                    alert("Cleared")
                 // Or go to another URL:  actions.redirect('thank_you.html');
                 //actions.redirect("https://localhost:7196/");
                 //alert('Transaction completed by ' + details.payer.name.given_name);
 
             });
+            window.location.href = '@Url.Action("Index","Home")';
+            alert("Home")
         }
 
     }).render('#paypal-button-container');

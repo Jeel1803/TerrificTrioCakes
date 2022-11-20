@@ -32,18 +32,27 @@
                         </div>
                     </div>
                 }
-            }
-            <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
-        <div class="col-md-4 summary">
+            <div class="col-md-4 summary">
             <div><h5><b>Summary</b></h5></div>
             <hr>
             <div class="row">
                 <div class="col" style="padding-left:0;"> Total</div>
                 <div class="col text-right">@ViewBag.total</div>
             </div>
-            <a asp-controller="Order" asp-action="CheckOut"><button class="btn">CHECKOUT</button></a>
+            <a asp-controller="Order" asp-action="CheckOut"><button class="btn" >CHECKOUT</button></a>
         </div>
+            }
+         <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+        </div>
+        @*<div class="col-md-4 summary">
+            <div><h5><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;"> Total</div>
+                <div class="col text-right">@ViewBag.total</div>
+            </div>
+            <a asp-controller="Order" asp-action="CheckOut"><button class="btn" >CHECKOUT</button></a>
+        </div>*@
     </div>            
 </div>
 

@@ -4,6 +4,8 @@
     ViewData["Title"] = "Ingredients";
 }
 
+@*Hosam: only admin and staff can see create option*@
+
 @if (User.IsInRole("Admin") | User.IsInRole("Staff"))
 {
     <p>

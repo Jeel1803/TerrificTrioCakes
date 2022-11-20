@@ -5,6 +5,7 @@ using TerrificTrioCakes.Models;
 
 namespace TerrificTrioCakes.Data
 {
+    //Using ApplicationUser
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -20,7 +21,8 @@ namespace TerrificTrioCakes.Data
         {
             base.OnModelCreating(builder);
 
-
+            //Seeding roles
+            //Adding 3 roles to database initially
             List<IdentityRole> roles = new List<IdentityRole>() {
                      new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
                      new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },

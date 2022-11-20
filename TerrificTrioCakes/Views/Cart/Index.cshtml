@@ -64,11 +64,15 @@
     </div>            
 </div>
 
+
+
+@*//Hosam: Instyle CSS for alert box*@
+
 <style>
     .alert {
         margin-top: 20px;
         padding: 15px;
-        background-color: #f44336;
+        background-color: green;
         color: white;
     }
 
@@ -92,7 +96,7 @@
 {
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>@ViewBag.Discount % Discount </strong>
+        <strong>@ViewBag.msg </strong>
     </div>
 
 }

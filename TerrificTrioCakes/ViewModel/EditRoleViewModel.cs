@@ -2,6 +2,8 @@
 
 namespace TerrificTrioCakes.ViewModel
 {
+
+    //Hosam: EditRoleViewModel class
     public class EditRoleViewModel
     {
         public string Id { get; set; }

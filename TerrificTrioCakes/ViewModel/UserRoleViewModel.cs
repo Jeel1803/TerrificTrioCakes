@@ -1,5 +1,7 @@
 ﻿namespace TerrificTrioCakes.ViewModel
 {
+
+    //Hosam: UserRoleViewModel class
     public class UserRoleViewModel
     {
 

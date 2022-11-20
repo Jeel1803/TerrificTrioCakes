@@ -29,6 +29,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
                         </li>
 
+                        @*Hosam: only admin and staff have access to category page*@
                          @if (User.IsInRole("Admin") | User.IsInRole("Staff"))
                         {
                             <li class="nav-item">
@@ -40,6 +41,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Ingredient" asp-action="Index">Ingredients</a>
                         </li>
 
+                        @*Hosam: only admin has access to roles page*@
                         @if (User.IsInRole("Admin"))
                         {
                           <li class="nav-item">
@@ -47,6 +49,10 @@
                           </li>
                         }
                         
+                        @*Hosam: all visitos have access to the membership page 
+                        but only authenticated users can actually display data
+                        Admin and staff do not need to see this page - admin has full functionality over memberships
+                        and staff do not need a membership view as they work there*@
                         @if (!User.IsInRole("Admin") && !User.IsInRole("Staff"))
                         {
                             <li class="nav-item">
@@ -54,6 +60,8 @@
                             </li>
                         }
 
+
+                        @*Hosam: only admin has access to membership page*@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">

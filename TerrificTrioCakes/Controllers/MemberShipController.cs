@@ -13,6 +13,7 @@ using TerrificTrioCakes.Models.DB;
 
 namespace TerrificTrioCakes.Controllers
 {
+    //Hosam: Users need to be logged in to access this controller
     [Authorize]
     public class MemberShipController : Controller
     {
@@ -26,16 +27,21 @@ namespace TerrificTrioCakes.Controllers
             _userManager = userManager;
         }
 
-        // GET: Membership
+        // Hosam: GET: Membership
         public async Task<IActionResult> Index()
         {
+            //creating a new list
             List<MemberShip> members = new List<MemberShip>();
+
+            //condition to find a membership with role admin
             if (User.IsInRole("Admin"))
             {
-
+                //retrieving all users from AspNetUsers table
                 var users = _context.AspNetUsers.ToList();
+                //loop to find all required fields from AspNetUsers table
                 foreach (var u in users)
                 {
+                    //new object with fields
                     MemberShip member = new MemberShip
                     {
                         FirstName = u.FirstName,
@@ -45,15 +51,21 @@ namespace TerrificTrioCakes.Controllers
                         MembershipDuration = u.MembershipDuration,
                         MembershipExpiry = u.MembershipExpiry
                     };
+                    //add found member to the initial new list
                     members.Add(member);
                 }
 
+                //return list
                 return View(members);
             }
+
+            //if user is authenticated
             else if (User.Identity.IsAuthenticated)
             {
+                // find by name
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+                //new object with details
                 MemberShip member = new MemberShip()
                 {
                     FirstName = user.FirstName,
@@ -64,6 +76,7 @@ namespace TerrificTrioCakes.Controllers
                     MembershipExpiry = user.MembershipExpiry
                 };
 
+                //add this found member to original list and view it
                 members.Add(member);
                 return View(members);
             }

@@ -4,17 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
+@*Hosam: Display required fields - additional fields removed*@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @*using fontawesome kit for icons styling*@
+    @*Hosam: using fontawesome kit for icons styling*@
     <script src="https://kit.fontawesome.com/1269185472.js" crossorigin="anonymous"></script>
 </head>
 
 
-<p>
-    <a  class="btn btn-success btn-primary mb-2" asp-action="Create"> <i class="fa-solid fa-address-card"></i> Add New Membership</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -69,6 +68,7 @@
             </td>
           
             <td>
+                @*Hosam: styling added to buttons*@
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i></a> 
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm"> <i class="fa-solid fa-file-lines"></i></a> 
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can fa-shake"></i></a>

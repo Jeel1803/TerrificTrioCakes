@@ -11,11 +11,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-
+//Jeel: Injecting Dbcontext
 builder.Services.AddDbContext<CakeShopContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
+//Hosam: Adding roles to the project
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -23,6 +25,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 
+
+//Hosam 21/11/222: Part of Google API implementation code
 //Sign in with Google
 var services = builder.Services;
 var configuration = builder.Configuration;
@@ -31,6 +35,9 @@ services.AddAuthentication().AddGoogle(googleOptions =>
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
 });
+
+
+
 
 var app = builder.Build();
 

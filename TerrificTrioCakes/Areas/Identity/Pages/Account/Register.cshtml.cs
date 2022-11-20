@@ -99,6 +99,8 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
+
+            //Hosam: Custome fields addition
             [Required]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
@@ -131,6 +133,8 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+
+                //Hosam: getting values from new users
                 var user = new ApplicationUser
                 {
                     UserName = Input.Email,
@@ -142,7 +146,8 @@ namespace TerrificTrioCakes.Areas.Identity.Pages.Account
                     MembershipExpiry = DateTime.Now.AddYears(1)
                 };
 
-                if(user.MembershipDuration == 6)
+                //conditions for each selection under MembershipDuration
+                if (user.MembershipDuration == 6)
                     user.MembershipExpiry = DateTime.Now.AddMonths(6);
                 else if (user.MembershipDuration == 12)
                     user.MembershipExpiry = DateTime.Now.AddMonths(12);

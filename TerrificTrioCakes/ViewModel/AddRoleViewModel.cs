@@ -2,6 +2,8 @@
 
 namespace TerrificTrioCakes.ViewModel
 {
+
+    //Hosam: AddRoleViewModel class
     public class AddRoleViewModel
     {
 

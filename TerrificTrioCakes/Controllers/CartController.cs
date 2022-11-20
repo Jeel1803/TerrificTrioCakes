@@ -129,34 +129,52 @@ namespace TerrificTrioCakes.Controllers
                 {
                     ViewBag.Cart = cart;
 
+                    //Hosam: string message to display the discount amount to each user
+                    string msg = "As a Gold member - Your order includes a 14% Discount";
+
+                    //Akhil: calculations of doscount and total for each member
                     double discount = 0.14;
                     decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
+                   
+                    ViewBag.msg = msg;
+                    ViewBag.total = Math.Round(discounted,2);
+                    ViewBag.Discount = Math.Round(discount * 100, 2);
 
-                    ViewBag.total = discounted;
-                    ViewBag.Discount = discount * 100;
                 }
                 else if (member.Membership == "silver" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;
 
+                    //Hosam: string message to display the discount amount to each user
+                    string msg = "As a Silver member - Your order includes a 9% Discount";
+
+                    //Akhil: calculations of doscount and total for each member
                     double discount = 0.09;
                     decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
+                    Math.Round(total, 2);
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
 
-                    ViewBag.total = discounted;
-                    ViewBag.Discount = discount * 100;
+                    ViewBag.msg = msg;
+                    ViewBag.total = Math.Round(discounted, 2);
+                    ViewBag.Discount = Math.Round(discount * 100, 2);
                 }
                 else if (member.Membership == "bronze" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;
 
+                    //Hosam: string message to display the discount amount to each user
+                    string msg = "As a Bronze member - Your order includes a 6% Discount";
+
+                    //Akhil: calculations of doscount and total for each member
                     double discount = 0.06;
                     decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
+                    Math.Round(total, 2);
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
 
-                    ViewBag.total = discounted;
-                    ViewBag.Discount = discount * 100;
+                    ViewBag.msg = msg;
+                    ViewBag.total = Math.Round(discounted, 2);
+                    ViewBag.Discount = Math.Round(discount * 100, 2);
                 }
                 else
                 {
@@ -164,7 +182,7 @@ namespace TerrificTrioCakes.Controllers
 
                     decimal total = cart.Sum(item => item.Cake.Price * item.Quantity);
 
-                    ViewBag.total = total;
+                    ViewBag.total = Math.Round(total, 2);
                 }
 
             }

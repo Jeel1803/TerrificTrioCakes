@@ -6,9 +6,12 @@ using TerrificTrioCakes.ViewModel;
 
 namespace TerrificTrioCakes.Controllers
 {
+
+    //Hosam: Admin only access to controller
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        //Hosam: using roleMnager and userManager to access roles
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -19,6 +22,7 @@ namespace TerrificTrioCakes.Controllers
         }
 
 
+        //Hosam: Retriecing all roles from database / get method
         [HttpGet]
         public IActionResult ListAllRoles()
         {
@@ -26,12 +30,16 @@ namespace TerrificTrioCakes.Controllers
             return View(roles);
         }
 
+
+        //Hosam: Add role view / get
         [HttpGet]
         public IActionResult AddRole()
         {
             return View();
         }
 
+
+        //Hosam: Add role / post
         [HttpPost]
         public async Task<IActionResult> AddRole(AddRoleViewModel model)
         {
@@ -59,6 +67,8 @@ namespace TerrificTrioCakes.Controllers
         }
 
 
+
+        //Hosam: edit role using the role id/ get
         [HttpGet]
         public async Task<IActionResult> EditRole(string id)
         {
@@ -88,6 +98,7 @@ namespace TerrificTrioCakes.Controllers
         }
 
 
+        //Hosam: edit role using editroleViewModel model class
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
@@ -118,7 +129,7 @@ namespace TerrificTrioCakes.Controllers
             }
         }
 
-
+        //Hosam: edit users in a role using id
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string id)
         {
@@ -158,6 +169,8 @@ namespace TerrificTrioCakes.Controllers
             return View(model);
         }
 
+
+        //Hosam: edit role using userRoleViewModel model class and id
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id)
         {
@@ -169,6 +182,7 @@ namespace TerrificTrioCakes.Controllers
                 return View("Error");
             }
 
+            //Hosam: loop to find role with id
             for (int i = 0; i < model.Count; i++)
             {
                 var user = await _userManager.FindByIdAsync(model[i].Id);
@@ -186,10 +200,12 @@ namespace TerrificTrioCakes.Controllers
                     continue;
                 }
             }
-
+            //Hosam: setting new role
             return RedirectToAction("EditRole", new { Id = id });
         }
 
+
+        //Hosam: deleting a role with id
         [HttpGet]
         public async Task<IActionResult> DeleteRole(string id)
         {
@@ -198,11 +214,13 @@ namespace TerrificTrioCakes.Controllers
             return View(role);
         }
 
+        //Hosam: confirming deletion
         [HttpPost]
         public async Task<IActionResult> ConfirmDelete(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
 
+            // if id is not found
             if (role == null)
             {
                 ViewData["ErrorMessage"] = $"No role with Id '{id}' was found";
@@ -210,6 +228,7 @@ namespace TerrificTrioCakes.Controllers
             }
             else
             {
+                // delete role if found
                 var result = await _roleManager.DeleteAsync(role);
 
                 if (result.Succeeded)

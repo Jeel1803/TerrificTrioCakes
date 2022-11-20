@@ -52,6 +52,8 @@ namespace TerrificTrioCakes.Controllers
         // POST: Category/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //Hosam: Only admin and staff can create a new category of cakes
         [Authorize(Roles = "Admin,Staff")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -67,6 +69,7 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Category/Edit/5
+        //Hosam: Only admin and staff can edit a category
         [Authorize(Roles = "Admin,Staff")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,6 +89,8 @@ namespace TerrificTrioCakes.Controllers
         // POST: Category/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //Hosam: Only admin and staff can edit a category
         [Authorize(Roles = "Admin,Staff")]
         [HttpPost]
         [ValidateAntiForgeryToken]

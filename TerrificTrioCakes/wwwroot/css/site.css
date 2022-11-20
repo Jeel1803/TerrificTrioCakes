@@ -56,7 +56,8 @@ body {
     letter-spacing: 1px;
     font-style: italic;
 }
-.product-row .card .card-body-footer h6 .currency {
+/*.product-row .card .card-body-footer h6 .currency*/
+.currency {
     font-size: 10px;
 }
 .product-row .card .card-body-header a {
@@ -75,7 +76,7 @@ body {
     object-fit: cover;
 }
 .product-single {
-    padding: 50px;
+    padding: 50px !important;
     border: 1px solid #eee;
 }
 .product-single-header .product-single-summary h1 {
@@ -312,9 +313,11 @@ body {
     padding: 0 10px;
     font-size: 13px;
     letter-spacing: 1px;
+    border-radius: 0;
+    /*position: relative;*/
 }
 .search-products .card .card-body button.btn {
-    padding: 3px 20px 4px 20px;
+    padding: 5px 20px 5px 20px;
     font-size: 16px;
     border-radius: 0;
     background: #333;
@@ -325,21 +328,49 @@ body {
     background: #fff;
     color: #333;
 }
+.form-control:focus {
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+    outline: black;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+}
+.autosugg {
+    position: relative;
+    display: block;
+    z-index: 100;
+    width: 100%;
+    border: 1px solid #ced4da;
+    box-shadow: 0px 10px 20px -10px #000;
+    background: #fff;
+}
+.autosugg > input {
+    width: 100% !important;
+    border: none;
+    background: transparent;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
 .search-products .card .card-body {
     padding-bottom: 30px;
 }
 .products-page {
     margin-top: 0px;
     border-top: 1px solid rgba(0,0,0,0.2);
+
 }
-.navbar-light .navbar-brand.site-logo {
+.navbar-light .navbar-brand.site-logo, footer .navbar-brand.site-logo {
     font-weight: 800;
     letter-spacing: 0.5px;
     border: 2px solid;
     padding: 3px 5px;
     color: #fff;
 }
-.navbar-light .navbar-brand.site-logo:hover {
+.navbar-light .navbar-brand.site-logo:hover, footer .navbar-brand.site-logo:hover {
     color: rgba(255,255,255,0.5);
 }
 nav.main-nav {
@@ -352,13 +383,19 @@ nav.main-nav > div {
 }
 nav.main-nav.navbar-light .navbar-nav .nav-link {
     color: #fff;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     padding: 5px 15px;
     font-weight: 600;
 }
 nav.main-nav.navbar-light .navbar-nav .nav-link:hover {
     background:#fff;
-    color: #333;
+    color: #333 !important;
+}
+.logout-btn > button {
+    border-radius: 0;
+}
+.after-login-username, .logout-btn > button {
+    font-size: 12px;
 }
 #carouselExampleIndicators {
     padding-top: 20px;
@@ -366,6 +403,131 @@ nav.main-nav.navbar-light .navbar-nav .nav-link:hover {
 .products-pagination {
     padding-top: 20px;
 }
+.pagination-container > .pagination {
+    justify-content: center !important;
+    margin-top: 20px;
+}
+.pagination-container > .pagination > li > .page-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #333;
+}
+.pagination-container > .pagination > li.active > .page-link {
+    background: #333;
+    color: #fff;
+}
+.pagination-container > .pagination > li > .page-link:focus {
+    box-shadow: none !important;
+}
+
+
+.login-form-cls {
+    background: #333 !important;
+}
+section.login-page-form, .register-page-form {
+    background: #333;
+    padding: 30px 50px 20px 50px;
+}
+section.login-page-form h1, .register-page-form h1 {
+    color: #fff;
+}
+section.login-page-form hr, .register-page-form hr {
+    opacity: 1;
+    color: #fff;
+}
+section.login-page-form input#Input_Email, section.login-page-form input#Input_Password,
+.register-page-form input#Input_FirstName, .register-page-form input#Input_LastName, .register-page-form input#Input_Email, .register-page-form input#Input_Password,
+.register-page-form select#Input_Membership, .register-page-form select#Input_MembershipDuration, .register-page-form input#Input_ConfirmPassword {
+    padding: 10px 15px !important;
+    height: auto !important;
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+section.login-page-form button#login-submit, .register-page-form #registerSubmit {
+    padding: 5px 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 18px;
+    font-weight: 700;
+    max-width: 50%;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 0;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+section.login-page-form button#login-submit:hover,
+section.login-page-form a#login-page-signup:hover, .register-page-form #registerSubmit:hover {
+    background: #fff;
+    color: #333;
+}
+section.login-page-form a#login-page-signup {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 5px 15px;
+}
+.form-footer-sec {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+
+.contact-us-page {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.contact-us-form {
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.contact-us-form h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+.contact-us-form h5 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+.contact-us-form input, .contact-us-form textarea {
+    padding: 10px 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-radius: 0;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.contact-us-form button {
+    padding: 5px 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    background: #333;
+    color: #fff;
+    border: 2px solid #333;
+    border-radius: 0;
+}
+.contact-us-form button:hover {
+    background: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+
+footer {
+    background: #333;
+    padding: 50px;
+}
+
+
 
 
 @media (min-width: 768px) {
@@ -373,6 +535,14 @@ nav.main-nav.navbar-light .navbar-nav .nav-link:hover {
         width: 33.3333333333%;
     }
 }
+
+
+
+
+
+
+
+
 
 /*Contact Us*/
 .contact .row {

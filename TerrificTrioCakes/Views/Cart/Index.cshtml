@@ -5,45 +5,54 @@
 }
 
 <div class="card cart-card-cls">
-    <div class="row">
-        <div class="col-md-8 cart">
-            <div class="title">
-                <div class="row">
-                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
-               </div>
-            </div>    
+    <div class="row">            
             @if(ViewBag.Cart == null)
-            {
-                <p>Cart is Empty! Please add items to cart first</p>
-            }
-            else{
-                @foreach (var item in ViewBag.Cart)
-                {
-                    <div class="row border-top border-bottom">
-                        <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="~/images/@item.Cake.Image"></div>
-                            <div class="col">
-                                <div class="row text-muted">@item.Cake.Name</div>
-                            </div>
-                            <div class="col">
-                                <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="decrese"> - </a><a href="#" class="border">@item.Quantity</a><a  asp-route-id="@item.Cake.Id" asp-action="add"> + </a>
-                            </div>
-                            <div class="col">$ @item.Cake.Price <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove"> <span class="close">&#10005;</span></a></div>
-                        </div>
+            {        
+                <div class="col-md-12 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                       </div>
                     </div>
-                }
-            <div class="col-md-4 summary">
-            <div><h5><b>Summary</b></h5></div>
-            <hr>
-            <div class="row">
-                <div class="col" style="padding-left:0;"> Total</div>
-                <div class="col text-right">@ViewBag.total</div>
-            </div>
-            <a asp-controller="Order" asp-action="CheckOut"><button class="btn" >CHECKOUT</button></a>
-        </div>
+                    <p>Cart is Empty! Please add items to cart first</p>
+                    <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                </div>
             }
-         <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
+            else{                
+                       <div class="col-md-8 cart">
+                            <div class="title">
+                                <div class="row">
+                                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                               </div>
+                            </div>
+                            @foreach (var item in ViewBag.Cart)
+                            {
+                                <div class="row border-top border-bottom">
+                                    <div class="row main align-items-center">
+                                        <div class="col-2"><img class="img-fluid" src="~/images/@item.Cake.Image"></div>
+                                        <div class="col">
+                                            <div class="row text-muted">@item.Cake.Name</div>
+                                        </div>
+                                        <div class="col">
+                                            <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="decrese"> - </a><a href="#" class="border">@item.Quantity</a><a  asp-route-id="@item.Cake.Id" asp-action="add"> + </a>
+                                        </div>
+                                        <div class="col">$ @item.Cake.Price <span class="currency">nzd</span> <a asp-controller="cart" asp-route-id="@item.Cake.Id" asp-action="remove"> <span class="close">&#10005;</span></a></div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="back-to-shop"><a asp-controller="Cake" asp-action="index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                        </div>              
+                <div class="col-md-4 summary">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;"> Total</div>
+                        <div class="col text-right">$ @ViewBag.total <span class="currency">nzd</span></div>
+                    </div>
+                    <a asp-controller="Order" asp-action="CheckOut"><button class="btn" >CHECKOUT</button></a>
+                </div>                
+            }
+         
         @*<div class="col-md-4 summary">
             <div><h5><b>Summary</b></h5></div>
             <hr>

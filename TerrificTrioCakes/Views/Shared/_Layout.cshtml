@@ -57,7 +57,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="AspNetUser" asp-action="Index">Membership Management</a>
+                                <a class="nav-link" asp-area="" asp-controller="AspNetUser" asp-action="Index">Membership</a>
                             </li>
                         }
                         <li class="nav-item">
@@ -80,8 +80,13 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - TerrificTrioCakes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <a class="navbar-brand site-logo" asp-area="" asp-controller="Home" asp-action="Index">TerrificTrioCakes</a>
+                </div>
+            </div>
+            <p class="text-white">&copy; 2022 - TerrificTrioCakes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

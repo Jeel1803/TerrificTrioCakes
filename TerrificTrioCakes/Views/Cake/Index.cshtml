@@ -21,28 +21,44 @@
 <div class="row justify-content-center search-products">
     <div class="col-12 col-md-10 col-lg-8">
         <form class="card card-sm" id="searchForm" action="/Cake/Index" method="get" autocomplete="off">
-            <div class="card-body row no-gutters align-items-center">
-                <div class="col-auto">
-                    <i class="fas fa-search h4 text-body"></i>
-                </div>
-                <!--end of col-->
+            <div class="card-body row no-gutters align-items-center">                           
                 <div class="col">
                     <input class="form-control form-control-lg form-control-borderless"  type="text" id="searchString" name="searchString"
                    autocomplete="off" onkeyup="XAjaxRequest(this.value);" placeholder="Search cakes">
-                </div>
+                   <div id="autoSuggestContainer" class="autosugg"></div>
+                </div> </br>
                 
-            </br>
-                <div id="autoSuggestContainer" style="position:absolute;display:none;z-index:100;"></div>
-
-                <!--end of col-->
                 <div class="col-auto">
                     <button class="btn btn-lg btn-success" type="submit">Search</button>
                 </div>
-                <!--end of col-->
+                
             </div>
+            @*<div class="form-check">
+              <input class="form-check-input" type="radio" name="radio" value="Standard" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Standard
+              </label>
+            </div>
+            <div class="form-check">
+             <input class="form-check-input" type="radio" name="radio" value="Vegan" id="flexRadioDefault1" >
+             <label class="form-check-label" for="flexRadioDefault2">
+                Vegan
+              </label>
+            </div>
+            <div class="form-check">
+             <input class="form-check-input" type="radio" name="radio" value="Eggless" id="flexRadioDefault1" >
+             <label class="form-check-label" for="flexRadioDefault2">
+                Eggless
+              </label>
+            </div>*@
+             @*<div class="col-auto">
+                    <button class="btn btn-lg btn-success" type="submit" value="Filter">Filter</button>
+             </div>*@
         </form>
+        
 
-        <form class="card card-sm" action="/Cake/Index" method="get" autocomplete="off">
+
+        @*form class="card card-sm" action="/Cake/Index" method="get" autocomplete="off">
 
             <label class="container">Standard
                 <input type="radio" name="radio" value="Standard">
@@ -56,7 +72,7 @@
 
             <input type="submit" value="Filter" />
         </form>
-
+*@
     </div>
     <!--end of col-->
 </div>

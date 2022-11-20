@@ -1,49 +1,21 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="https://kit.fontawesome.com/1269185472.js" crossorigin="anonymous"></script>
-
-    <link href="~/css/site.css" rel="stylesheet" />
-</head>
-
-<body>
-    <section class="contact" id="contact">
-        <h1 class="heading">
-            <span>c</span>
-            <span>o</span>
-            <span>n</span>
-            <span>t</span>
-            <span>a</span>
-            <span>c</span>
-            <span>t</span>
-            <br /><br />
-            <span>u</span>
-            <span>s</span>
-        </h1>
-
-        <div class="row">
-
-            <div class="image">
-                <img src="images/contact-img.svg" alt="">
+﻿<div class="row contact-us-page">
+    <div class="col-7 contact-us-form">
+        <h1 class="text-center"> Contact Us </h1>
+        <h5 class="text-center"> Get in touch for any query </h5>
+        <form>
+            <div class="form-group">            
+                <input type="text" class="form-control" id="contactInputFirstName" placeholder="Enter your name">
+            </div>            
+            <div class="form-group">            
+                <input type="email" class="form-control" id="contactInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">            
             </div>
-
-            <form name="contact" action="">
-                <div class="inputBox">
-                    <input name="name" type="text" placeholder="name" required>
-                    <input name="email" type="email" placeholder="email" required>
-                </div>
-                <div class="inputBox">
-                    <input name="phone" type="number" placeholder="number" required>
-                    <input name="subject" type="text" placeholder="subject" required>
-                </div>
-                <textarea name="message" placeholder="message" id="" cols="30" rows="10" required></textarea>
-                <button class="btn btn-lg btn-success" onclick="contactUs()" >Contact Us</button>
-            </form>
-
-            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25499.89431917176!2d174.85762709823356!3d-36.97431207884736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smit!5e0!3m2!1sen!2snz!4v1668898024586!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-    </section>
-    <script src="~/js/site.js"></script>
-</body>
-</html>
+            <div class="form-group">            
+                <textarea class="form-control" id="contactInputMessage" rows="3" placeholder="Enter your message..."></textarea>
+            </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-5">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3186.662382550521!2d174.87510011580778!3d-36.99399129535249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d4dc0014191a1%3A0x134d1133e88c7ca5!2sManukau%20Institute%20of%20Technology%2C%20Manukau%20campus!5e0!3m2!1sen!2snz!4v1668927597060!5m2!1sen!2snz" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>

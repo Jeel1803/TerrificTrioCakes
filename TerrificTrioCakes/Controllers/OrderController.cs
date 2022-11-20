@@ -55,7 +55,7 @@ namespace TerrificTrioCakes.Controllers
                     MembershipExpiry = user.MembershipExpiry
                 };
 
-                if (member.Membership == "gold")
+                if (member.Membership == "gold" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;
 
@@ -64,8 +64,9 @@ namespace TerrificTrioCakes.Controllers
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
 
                     ViewBag.total = discounted;
+                    ViewBag.Discount = discount * 100;
                 }
-                else if (member.Membership == "silver")
+                else if (member.Membership == "silver" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;
 
@@ -74,8 +75,9 @@ namespace TerrificTrioCakes.Controllers
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
 
                     ViewBag.total = discounted;
+                    ViewBag.Discount = discount * 100;
                 }
-                else if (member.Membership == "bronze")
+                else if (member.Membership == "bronze" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;
 
@@ -84,9 +86,22 @@ namespace TerrificTrioCakes.Controllers
                     decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
 
                     ViewBag.total = discounted;
+                    ViewBag.Discount = discount * 100;
+                }
+                else
+                {
+                    ViewBag.Cart = cart;
+
+                    decimal total = cart.Sum(item => item.Cake.Price * item.Quantity);
+
+                    ViewBag.total = total;
                 }
 
             }
+            else if (cart == null)
+                ViewBag.Empty = "Empty";
+
+
             return View();
         }
 

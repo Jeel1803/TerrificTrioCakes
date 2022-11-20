@@ -525,6 +525,10 @@ section.login-page-form a#login-page-signup {
 footer {
     background: #333;
     padding: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 

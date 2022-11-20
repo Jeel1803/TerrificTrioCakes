@@ -50,6 +50,41 @@
 </div>
 
 
+
+<style>
+    .alert {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f44336;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+</style>
+
+@if (ViewBag.Empty != "Empty")
+{
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>@ViewBag.Discount % Discount </strong>
+    </div>
+
+}
+
+
 <script src="https://www.paypal.com/sdk/js?client-id=ATNwtOFAgffDhMfTE8dGXlau9W8Gv82HLENDNmAfobf55lKFzR1u48MWIaTOK4s6V0Rancd7L8HJSox3"></script>
 <script>
     paypal.Buttons({

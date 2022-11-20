@@ -52,7 +52,6 @@
                     <a asp-controller="Order" asp-action="CheckOut"><button class="btn" >CHECKOUT</button></a>
                 </div>                
             }
-         
         @*<div class="col-md-4 summary">
             <div><h5><b>Summary</b></h5></div>
             <hr>
@@ -65,4 +64,36 @@
     </div>            
 </div>
 
+<style>
+    .alert {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f44336;
+        color: white;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+</style>
+
+@if(ViewBag.Empty != "Empty")
+{
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>@ViewBag.Discount % Discount </strong>
+    </div>
+
+}
 

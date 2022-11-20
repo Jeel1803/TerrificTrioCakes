@@ -33,46 +33,26 @@
                 </div>
                 
             </div>
-            @*<div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" value="Standard" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Standard
-              </label>
+        </form>
+
+        <form>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="Standard">
+                <label class="form-check-label" for="inlineRadio1">Standard</label>
             </div>
-            <div class="form-check">
-             <input class="form-check-input" type="radio" name="radio" value="Vegan" id="flexRadioDefault1" >
-             <label class="form-check-label" for="flexRadioDefault2">
-                Vegan
-              </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="Vegan">
+                <label class="form-check-label" for="inlineRadio1">Vegan</label>
             </div>
-            <div class="form-check">
-             <input class="form-check-input" type="radio" name="radio" value="Eggless" id="flexRadioDefault1" >
-             <label class="form-check-label" for="flexRadioDefault2">
-                Eggless
-              </label>
-            </div>*@
-             @*<div class="col-auto">
-                    <button class="btn btn-lg btn-success" type="submit" value="Filter">Filter</button>
-             </div>*@
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="Eggless">
+                <label class="form-check-label" for="inlineRadio1">Eggless</label>
+            </div>
+            <div class="form-check form-check-inline col-auto card-body row no-gutters align-items-center">
+                <button class="btn btn-lg btn-success" type="submit" value="Filter">Filter</button>
+            </div>
         </form>
         
-
-
-        @*form class="card card-sm" action="/Cake/Index" method="get" autocomplete="off">
-
-            <label class="container">Standard
-                <input type="radio" name="radio" value="Standard">
-            </label>
-            <label class="container">Vegan
-                <input type="radio" name="radio" value="Vegan">
-            </label>
-            <label class="container">Eggless
-                <input type="radio" name="radio" value="Eggless"
-            </label>
-
-            <input type="submit" value="Filter" />
-        </form>
-*@
     </div>
     <!--end of col-->
 </div>
@@ -101,6 +81,8 @@
         </div>
     }
 </div>
+
+
 
 @*code for display number of pages *@
 @Html.PagedListPager(Model, page => Url.Action("Index",

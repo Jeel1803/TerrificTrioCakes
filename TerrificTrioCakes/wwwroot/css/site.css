@@ -16,8 +16,12 @@ html {
   min-height: 100%;
 }
 
-body {
+/*body {
   margin-bottom: 60px;
+}*/
+
+::placeholder {
+    color: rgba(0,0,0,0.4) !important;
 }
 
 .product-row .card img {
@@ -484,7 +488,7 @@ section.login-page-form a#login-page-signup {
 }
 
 
-.contact-us-page {
+.contact-us-page, .about-us-page {
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -492,11 +496,11 @@ section.login-page-form a#login-page-signup {
     padding: 30px;
     border: 1px solid rgba(0,0,0,0.2);
 }
-.contact-us-form h1 {
+.contact-us-form h1, .about-us-form h1 {
     font-size: 36px;
     letter-spacing: 2px;
 }
-.contact-us-form h5 {
+.contact-us-form h5, .about-us-form h5 {
     font-size: 16px;
     letter-spacing: 1px;
     margin-bottom: 30px;
@@ -529,12 +533,47 @@ section.login-page-form a#login-page-signup {
 
 footer {
     background: #333;
-    padding: 50px;
+    padding: 50px 50px 0px 50px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
 }
+footer .footer-copyright {
+    margin-bottom: 0;
+    border-top: 1px solid #fff;
+    margin-top: 20px;
+}
+footer svg {
+    margin-right: 15px;
+    color: #fff;
+}
+footer .footer-logo {
+    margin-bottom: 10px;;
+}
+
+
+
+.about-us-page img {
+    width: 100%;
+    margin-top: 50px;
+}
+.about-us-page p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-style: italic;
+    text-align: justify;
+}
+.about-us-page .cited {
+    text-align: right;
+    font-size: 13px;
+}
+.about-us-page .cited a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #333;
+}
+
 
 
 

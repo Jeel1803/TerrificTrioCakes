@@ -575,6 +575,48 @@ footer .footer-logo {
 }
 
 
+.name {
+    color: #333;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+.work {
+    font-weight: bold;
+    font-size: 15px;
+}
+.about span {
+    font-size: 13px;
+}
+.v-profile a {
+    color: #fff;
+    background: #333;
+    padding: 5px 15px;
+    text-decoration: none;
+    border: 1px solid #333;
+}
+.v-profile a:hover {
+    background: #fff;
+    color: #333;
+}
+.box {
+    box-shadow: 0 0 16px 0px rgb(196 194 196 / 72%)
+}
+.privacy-col-3 {
+    margin-top: 10px;
+}
+.privacy-page-content {
+    margin-bottom: 3rem;
+}
+.privacy-page-content .rounded {
+    border-radius: 0 !important;
+    padding: 60px 50px !important;
+}
+.privacy-page-content img {
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+
 
 
 

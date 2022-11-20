@@ -25,7 +25,15 @@ namespace TerrificTrioCakes.Controllers
         // GET: AspNetUser
         public async Task<IActionResult> Index()
         {
-              return View(await _context.AspNetUsers.ToListAsync());
+            try
+            {
+                return View(await _context.AspNetUsers.ToListAsync());
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
         }
 

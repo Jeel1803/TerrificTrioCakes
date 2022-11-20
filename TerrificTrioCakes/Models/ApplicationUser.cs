@@ -7,12 +7,12 @@ namespace TerrificTrioCakes.Models
     {
         //Custom Fields
 
-        public string FirstName { get; set; }
-        
-        public string LastName { get; set; }
-        
+        public string? FirstName { get; set; }
 
-        public string Membership { get; set; }
+        public string? LastName { get; set; }
+
+
+        public string? Membership { get; set; }
         
         public DateTime MembershipExpiry { get; set; }
 

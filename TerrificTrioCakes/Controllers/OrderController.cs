@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TerrificTrioCakes.Models;
 using TerrificTrioCakes.Models.DB;
 
 namespace TerrificTrioCakes.Controllers
@@ -13,9 +15,12 @@ namespace TerrificTrioCakes.Controllers
     {
         private readonly CakeShopContext _context;
 
-        public OrderController(CakeShopContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public OrderController(CakeShopContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult CheckOut()
@@ -38,8 +43,49 @@ namespace TerrificTrioCakes.Controllers
             var cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
             if (cart != null)
             {
-                ViewBag.Cart = cart;
-                ViewBag.total = cart.Sum(item => item.Cake.Price * item.Quantity);
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+                MemberShip member = new MemberShip()
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    Membership = user.Membership,
+                    MembershipDuration = user.MembershipDuration,
+                    MembershipExpiry = user.MembershipExpiry
+                };
+
+                if (member.Membership == "gold")
+                {
+                    ViewBag.Cart = cart;
+
+                    double discount = 0.14;
+                    decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
+                    decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
+
+                    ViewBag.total = discounted;
+                }
+                else if (member.Membership == "silver")
+                {
+                    ViewBag.Cart = cart;
+
+                    double discount = 0.09;
+                    decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
+                    decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
+
+                    ViewBag.total = discounted;
+                }
+                else if (member.Membership == "bronze")
+                {
+                    ViewBag.Cart = cart;
+
+                    double discount = 0.06;
+                    decimal total = cart.Sum(item => item.Cake.Price * item.Quantity) * decimal.Parse(discount.ToString());
+                    decimal discounted = cart.Sum(item => item.Cake.Price * item.Quantity) - total;
+
+                    ViewBag.total = discounted;
+                }
+
             }
             return View();
         }

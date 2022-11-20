@@ -12,8 +12,8 @@ using TerrificTrioCakes.Models.DB;
 namespace TerrificTrioCakes.Migrations
 {
     [DbContext(typeof(CakeShopContext))]
-    [Migration("20221119085845_Tables")]
-    partial class Tables
+    [Migration("20221120005933_databaseTables")]
+    partial class databaseTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -511,6 +511,30 @@ namespace TerrificTrioCakes.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("TerrificTrioCakes.ViewModel.CustomIngredients", b =>
+                {
+                    b.Property<int>("CakeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CakeId"), 1L, 1);
+
+                    b.Property<string>("CakeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IngredientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CakeId");
+
+                    b.ToTable("CustomIngredients");
                 });
 
             modelBuilder.Entity("AspNetUserRole", b =>

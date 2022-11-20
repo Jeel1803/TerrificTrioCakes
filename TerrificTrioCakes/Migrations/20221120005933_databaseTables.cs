@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TerrificTrioCakes.Migrations
 {
-    public partial class Tables : Migration
+    public partial class databaseTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,6 +65,21 @@ namespace TerrificTrioCakes.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustomIngredients",
+                columns: table => new
+                {
+                    CakeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CakeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IngredientId = table.Column<int>(type: "int", nullable: false),
+                    IngredientName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomIngredients", x => x.CakeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -445,6 +460,9 @@ namespace TerrificTrioCakes.Migrations
 
             migrationBuilder.DropTable(
                 name: "CartItems");
+
+            migrationBuilder.DropTable(
+                name: "CustomIngredients");
 
             migrationBuilder.DropTable(
                 name: "MemberShip");

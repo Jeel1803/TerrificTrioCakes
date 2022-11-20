@@ -511,6 +511,30 @@ namespace TerrificTrioCakes.Migrations
                     b.ToTable("OrderDetails");
                 });
 
+            modelBuilder.Entity("TerrificTrioCakes.ViewModel.CustomIngredients", b =>
+                {
+                    b.Property<int>("CakeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CakeId"), 1L, 1);
+
+                    b.Property<string>("CakeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IngredientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CakeId");
+
+                    b.ToTable("CustomIngredients");
+                });
+
             modelBuilder.Entity("AspNetUserRole", b =>
                 {
                     b.HasOne("TerrificTrioCakes.Models.DB.AspNetRole", null)

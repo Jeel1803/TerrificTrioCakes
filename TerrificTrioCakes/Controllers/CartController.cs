@@ -25,11 +25,14 @@ namespace TerrificTrioCakes.Controllers
             _userManager = userManager;
         }
 
+        //Action method to add cakes to the cart
         public IActionResult Buy(int id)
         {
             CakeModel cakeModel = new CakeModel();
+            //Checking if the cart is null?
             if (SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart") == null)
             {
+                //Creting a list of cartitems using session helper class
                 List<CartItems> cart = new List<CartItems>();
                 cart.Add(new CartItems { Cake = cakeModel.find(id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
@@ -51,6 +54,7 @@ namespace TerrificTrioCakes.Controllers
             return RedirectToAction("Index");
         }
 
+        //Action method to prompt user to the checkout
         public IActionResult CheckOut()
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -58,6 +62,8 @@ namespace TerrificTrioCakes.Controllers
 
             return View();
         }
+
+        //Code to increase the quantity of the cakes added in the cart
         public IActionResult Add(int id)
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -69,10 +75,14 @@ namespace TerrificTrioCakes.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");
         }
+
+        //Code to decrease the quantity of the cakes added in the cart
+
         public IActionResult decrese(int id)
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
             int index = isExist(id);
+            //if the cake with same id exists in the cart, it will addd up the quaantity
             if (index != -1)
             {
                 if (cart[index].Quantity > 1)
@@ -81,6 +91,9 @@ namespace TerrificTrioCakes.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");
         }
+
+        //Code to Remove particular cakes added in the cart
+
         public IActionResult Remove(int id)
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -93,7 +106,7 @@ namespace TerrificTrioCakes.Controllers
             return RedirectToAction("Index");
         }
 
-
+        //Checking if the cake with same id exists in the cart
         private int isExist(int id)
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -108,11 +121,14 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Cart
+
+
         public async Task<IActionResult> Index()
         {
             var cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
             if (cart != null)
             {
+                //fetching the current user
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
                 MemberShip member = new MemberShip()
@@ -125,6 +141,7 @@ namespace TerrificTrioCakes.Controllers
                     MembershipExpiry = user.MembershipExpiry
                 };
 
+                //Conditions to check the subscription of current user and calculating discount based on membership
                 if (member.Membership == "gold" && member.MembershipExpiry > DateTime.Now)
                 {
                     ViewBag.Cart = cart;

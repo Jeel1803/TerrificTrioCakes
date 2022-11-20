@@ -16,6 +16,7 @@ namespace TerrificTrioCakes.Controllers
             _context = context;
         }
 
+        //Action method to fetch the cakes that are featured and showed on homepage
         public async Task<IActionResult> Index()
         {
             var cakeShopContext = _context.Cakes.Where(ck=>ck.IsFeatured == true).Include(c => c.Categories);

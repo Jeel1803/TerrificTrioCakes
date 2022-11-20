@@ -16,14 +16,12 @@ html {
   min-height: 100%;
 }
 
-/*body {
-  margin-bottom: 60px;
-}*/
 
+/*styling color-profile placeholders in the login and register form */
 ::placeholder {
     color: rgba(0,0,0,0.4) !important;
 }
-
+/**/
 .product-row .card img {
     width: 100%;
     height: 300px;
@@ -60,7 +58,6 @@ html {
     letter-spacing: 1px;
     font-style: italic;
 }
-/*.product-row .card .card-body-footer h6 .currency*/
 .currency {
     font-size: 10px;
 }
@@ -164,43 +161,43 @@ html {
 /*=================================*/
 
 .cart-card-cls .title {
-    margin-bottom: 5vh;
+    margin-bottom: 50px;
 }
 .cart-card-cls {
     margin: auto;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
+    border-radius: 20px;
     border: transparent;
 }
 @media(max-width:767px){
     .cart-card-cls {
-        margin: 3vh auto;
+        margin: 30px auto;
     }
 }
 .cart-card-cls .cart {
     background-color: #fff;
-    padding: 4vh 5vh;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
+    padding: 40px 50px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
 }
 @media(max-width:767px){
     .cart-card-cls .cart {
-        padding: 4vh;
+        padding: 40px;
         border-bottom-left-radius: unset;
-        border-top-right-radius: 1rem;
+        border-top-right-radius: 20px;
     }
 }
 .cart-card-cls .summary {
     background-color: #ddd;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    padding: 4vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 40px;
     color: rgb(65, 65, 65);
 }
 @media(max-width:767px){
     .cart-card-cls .summary {
         border-top-right-radius: unset;
-        border-bottom-left-radius: 1rem;
+        border-bottom-left-radius: 20px;
     }
 }
 .cart-card-cls .summary .col-2 {
@@ -213,18 +210,18 @@ html {
     margin: 0;
 }
 .cart-card-cls .title b {
-    font-size: 1.5rem;
+    font-size: 25px;
 }
 .cart-card-cls .main {
     margin: 0;
-    padding: 2vh 0;
+    padding: 20px 0;
     width: 100%;
 }
 .cart-card-cls .col-2, .cart-card-cls .col {
-    padding: 0 1vh;
+    padding: 0 10px;
 }
 .cart-card-cls a {
-    padding: 0 1vh;
+    padding: 0 10px;
 }
 .cart-card-cls .close {
     margin-left: 10px;
@@ -232,32 +229,32 @@ html {
     cursor: pointer;
 }
 .cart-card-cls img {
-    width: 3.5rem;
+    width: 1000px;
 }
 .cart-card-cls .back-to-shop {
-    margin-top: 4.5rem;
+    margin-top: 80px;
 }
 .cart-card-cls h5 {
-    margin-top: 4vh;
+    margin-top: 40px;
 }
 .cart-card-cls hr {
-    margin-top: 1.25rem;
+    margin-top: 30px;
 }
 .cart-card-cls form {
-    padding: 2vh 0;
+    padding: 30px 0;
 }
 .cart-card-cls select {
     border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1.5vh 1vh;
-    margin-bottom: 4vh;
+    padding: 25px 10px;
+    margin-bottom: 40px;
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
 .cart-card-cls input {
     border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
+    padding: 10px;
+    margin-bottom: 40px;
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247);
@@ -272,8 +269,8 @@ html {
     color: white;
     width: 100%;
     font-size: 0.7rem;
-    margin-top: 4vh;
-    padding: 1vh;
+    margin-top: 40px;
+    padding: 20px;
     border-radius: 0;
 }
 .cart-card-cls .btn:focus{
@@ -552,7 +549,9 @@ footer .footer-logo {
     margin-bottom: 10px;;
 }
 
-
+#paypal-button-container {
+    margin-top: 60px !important;
+}
 
 .about-us-page img {
     width: 100%;

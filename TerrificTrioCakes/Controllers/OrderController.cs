@@ -29,6 +29,8 @@ namespace TerrificTrioCakes.Controllers
             return RedirectToAction("Index");
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
         }
+
+        //Code to clear the session when the payment is approved. This method is called in the onApprove() in the javascript of the PayPal API. This method will redirect user to the Homepage
         public IActionResult Clear()
         {
             List<CartItems> cart = SessionHelper.GetObjectFromJson<List<CartItems>>(HttpContext.Session, "cart");
@@ -47,6 +49,7 @@ namespace TerrificTrioCakes.Controllers
 
                 MemberShip member = new MemberShip()
                 {
+                    
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email,

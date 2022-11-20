@@ -21,12 +21,12 @@ namespace TerrificTrioCakes.Controllers
         }
 
         // GET: Cake
+        //code for displaying the the cakes as per the search string provided and filtering it through the input from the radio buttons
         public async Task<IActionResult> Index(string searchString, int? page, string radio)
         {
             var pageNumber = page ?? 1;
-            //var cake = from c in _context.Cakes select c;
 
-
+           
             if (!string.IsNullOrEmpty(searchString))
             {
                var cake = _context.Cakes.Where(ck => ck.Name.Contains(searchString)).Include(cat=> cat.Categories);
@@ -58,12 +58,9 @@ namespace TerrificTrioCakes.Controllers
 
             return RedirectToAction("Index");
 
-
-            //var cakeShopContext = _context.Cakes.Include(c => c.Categories);
-
-            //return View(await cakeShopContext.ToListAsync());
         }
 
+        //Code to search the cake as per the search string provided by users in the searchbar
         public string IndexAJAX(string searchString)
         {
             string sql = "SELECT * FROM Cakes WHERE Name LIKE @p0"; 

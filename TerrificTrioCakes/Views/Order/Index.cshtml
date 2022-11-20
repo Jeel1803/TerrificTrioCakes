@@ -46,7 +46,8 @@
 
              
         </div>
-    </div>            
+    </div> 
+
 </div>
 
 
@@ -75,6 +76,7 @@
         }
 </style>
 
+@*Alert for showing the discount calculated based on membership*@
 @if (ViewBag.Empty != "Empty")
 {
     <div class="alert">
@@ -85,6 +87,8 @@
 }
 
 
+
+
 <script src="https://www.paypal.com/sdk/js?client-id=ATNwtOFAgffDhMfTE8dGXlau9W8Gv82HLENDNmAfobf55lKFzR1u48MWIaTOK4s6V0Rancd7L8HJSox3"></script>
 <script>
     paypal.Buttons({
@@ -93,8 +97,7 @@
             // including the amount and line item details.
 
             var grandTotal = @ViewBag.total
-                        //parseFloat(document.getElementById("GrandTotal").value).toFixed(2).toString();
-                    //alert("GrandTotal = " + grandTotal);
+                        
                     return actions.order.create({
                 purchase_units: [{
                     amount: {
@@ -113,10 +116,8 @@
                 element.innerHTML = '<h3>Thank you for your payment!</h3>' +
                     '<br><h4>Transaction completed by ' + details.payer.name.given_name + '</h4>';
                     window.location.href = '@Url.Action("Clear","Order")';
-                    alert("Cleared")
-                // Or go to another URL:  actions.redirect('thank_you.html');
-                //actions.redirect("https://localhost:7196/");
-                //alert('Transaction completed by ' + details.payer.name.given_name);
+                   // alert("Cleared")
+                
 
             });
             window.location.href = '@Url.Action("Index","Home")';

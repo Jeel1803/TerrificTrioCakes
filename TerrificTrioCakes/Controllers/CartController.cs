@@ -85,6 +85,7 @@ namespace TerrificTrioCakes.Controllers
             //if the cake with same id exists in the cart, it will addd up the quaantity
             if (index != -1)
             {
+                //making sure it doesn't go under 1
                 if (cart[index].Quantity > 1)
                     cart[index].Quantity--;
             }

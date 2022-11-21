@@ -27,6 +27,7 @@ namespace TerrificTrioCakes.Controllers
             var pageNumber = page ?? 1;
 
            
+            //searching based on category
             if (!string.IsNullOrEmpty(searchString))
             {
                var cake = _context.Cakes.Where(ck => ck.Name.Contains(searchString)).Include(cat=> cat.Categories);
@@ -144,7 +145,7 @@ namespace TerrificTrioCakes.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (id == cake.Id)
             {
                 try
                 {
@@ -165,6 +166,7 @@ namespace TerrificTrioCakes.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoriesId"] = new SelectList(_context.Categories, "Id", "Id", cake.CategoriesId);
+
             return View(cake);
         }
 

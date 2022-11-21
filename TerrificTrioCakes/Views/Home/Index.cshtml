@@ -51,10 +51,10 @@
                     <img src="~/images/@item.Image" class="card-img-top">                    
                 </a>
                 <div class="card-body text-center card-body-header">
-                    <a asp-action="Details" asp-route-id="@item.Id">
+                    <a  asp-controller="Cake" asp-action="Details" asp-route-id="@item.Id">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                         <h6 class="card-title cake-cat">@Html.DisplayFor(modelItem => item.Categories.Name) Cake</h6>
-                    </a>
+                    </a >
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>                              
                 </div>
                 <div class="card-body  d-flex justify-content-evenly card-body-footer">
